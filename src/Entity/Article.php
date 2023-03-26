@@ -32,6 +32,11 @@ class Article
      */
     private $niveau;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive = true;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Article
     public function setNiveau(?Niveau $niveau): self
     {
         $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    public function isIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }

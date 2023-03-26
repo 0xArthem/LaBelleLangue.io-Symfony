@@ -6,6 +6,7 @@ use App\Entity\Article;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -32,6 +33,7 @@ class ArticleCrudController extends AbstractCrudController
             TextField::new('title')->setLabel('Titre'),
             AssociationField::new('niveau')->setLabel('Niveau'),
             AssociationField::new('theme')->setLabel('Thème'),
+            BooleanField::new('isActive')->setLabel('Afficher')
         ];
     }
 }

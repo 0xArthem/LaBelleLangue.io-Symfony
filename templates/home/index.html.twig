@@ -6,5 +6,23 @@
 {% block body %}
 	<div>
 		<h1 class="text-center">Hello LaBelleLangue.io</h1>
+
+		<br><br>
+
+		{% for article in articles %}
+			<h5>{{ article.title}}</h5>
+		{% endfor %}
+
+		<br><br>
+
+		{% for theme in themes %}
+			<h5>{{ theme.name}}</h5>
+		{% endfor %}
+
+		<br><br>
+
+		{% for niveau in niveaux %}
+			<h5>{{ niveau.name}}</h5>
+		{% endfor %}
 	</div>
 {% endblock %}
