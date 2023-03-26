@@ -29,6 +29,11 @@ class Niveau
      */
     private $articles;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slug;
+
     public function __toString()
     {
         return $this->name;
@@ -83,6 +88,18 @@ class Niveau
                 $article->setNiveau(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

@@ -29,6 +29,7 @@ class NiveauCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm()->hideOnIndex()->setLabel('ID'),
             TextField::new('name')->setLabel('Nom'),
+            TextField::new('slug')->setLabel('Slug'),
         ];
     }
 }

@@ -46,4 +46,19 @@ class HomeController extends AbstractController
             'articles' => $articles
         ]);
     }
+
+    /**
+     * @Route("/niveau/{slug}", name="niveau")
+     */
+    public function niveau($slug, NiveauRepository $niveauRepository, ArticleRepository $articleRepository): Response
+    {
+
+        $niveau = $niveauRepository->findOneBy(['slug' => $slug]);
+        $articles = $articleRepository->findBy(['niveau' => $niveau], ['id' => 'DESC']);
+
+        return $this->render('home/niveau.html.twig', [
+            'niveau' => $niveau,
+            'articles' => $articles
+        ]);
+    }
 }

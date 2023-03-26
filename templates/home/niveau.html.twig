@@ -5,10 +5,9 @@
 
 {% block body %}
 	{% set mois_fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'] %}
-	<div>
-		<h1 class="text-center">Hello LaBelleLangue.io</h1>
 
-		<br><br>
+	<div>
+		<h1>{{ niveau.name }}</h1>
 
 		<div class="row row-cols-1 row-cols-md-3 g-4">
 			{% for article in articles %}
@@ -40,44 +39,6 @@
 						</div>
 					</div>
 				</div>
-			{% endfor %}
-		</div>
-
-		<br><br>
-
-		<div class="row row-cols-1 row-cols-md-3 g-4">
-			{% for theme in themes %}
-				<a href="{{ path('theme', {'slug':theme.slug}) }}">
-					<div class="col">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">
-									<i class="fas fa-layer-group me-1"></i>
-									{{ theme.name}}
-								</h5>
-								<p class="card-text">
-									{{ theme.description|striptags|length > 142 ? theme.description|striptags|slice(0, 142) ~ ' ...' : theme.description|striptags }}
-								</p>
-							</div>
-						</div>
-					</div>
-				</a>
-			{% endfor %}
-		</div>
-
-		<br><br>
-
-		<div class="row row-cols-1 row-cols-md-4 g-4">
-			{% for niveau in niveaux %}
-				<a href="{{ path('niveau', {'slug':niveau.slug}) }}">
-					<div class="col">
-						<div class="card card-niveau">
-							<div class="card-body card-niveau-body">
-								{{ niveau.name}}
-							</div>
-						</div>
-					</div>
-				</a>
 			{% endfor %}
 		</div>
 	</div>
