@@ -45,9 +45,23 @@
 
 		<br><br>
 
-		{% for theme in themes %}
-			<h5>{{ theme.name}}</h5>
-		{% endfor %}
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+			{% for theme in themes %}
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">
+								<i class="fas fa-layer-group me-1"></i>
+								{{ theme.name}}
+							</h5>
+							<p class="card-text">
+								{{ theme.description|striptags|length > 142 ? theme.description|striptags|slice(0, 142) ~ ' ...' : theme.description|striptags }}
+							</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 
 		<br><br>
 

@@ -20,8 +20,8 @@ class HomeController extends AbstractController
         /**on récupère les 3 derniers articles dont la propriété de type booléen isActive est true et par ordre décroissant */
         $articles = $articleRepository->findBy(array('isActive' => true), array('id' => 'DESC'), 3, 0);
 
-        /**on récupère les 3 derniers thèmes par ordre décroissant */
-        $themes = $themeRepository->findBy(array(), array('id' => 'DESC'), 3, 0);
+        /**on récupère les thèmes par ordre décroissant */
+        $themes = $themeRepository->findBy(array(), array('id' => 'DESC'));
 
         /**on récupère les niveaux par ordre croissant */
         $niveaux = $niveauRepository->findBy(array(), array('id' => 'ASC'));
