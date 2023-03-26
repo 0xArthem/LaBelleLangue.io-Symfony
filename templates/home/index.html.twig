@@ -65,8 +65,16 @@
 
 		<br><br>
 
-		{% for niveau in niveaux %}
-			<h5>{{ niveau.name}}</h5>
-		{% endfor %}
+		<div class="row row-cols-1 row-cols-md-4 g-4">
+			{% for niveau in niveaux %}
+				<div class="col">
+					<div class="card card-niveau">
+						<div class="card-body card-niveau-body">
+							{{ niveau.name}}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 	</div>
 {% endblock %}
