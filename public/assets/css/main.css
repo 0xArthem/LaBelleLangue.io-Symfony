@@ -14,3 +14,7 @@ body{
 .card-niveau{
     background-color: #262626 !important;
 }
+.article-section-vocabulaire{
+    border-radius: 5px;
+    padding: 25px;
+}

@@ -6,7 +6,7 @@
 {% block body %}
 	{% set mois_fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'] %}
 
-	<div>
+	<div class="text-dark">
 		<h1>{{ article.title }}</h1>
 
 		<p>({{ article.createdAt|date('j ') ~ mois_fr[article.createdAt|date('n')] ~ article.createdAt|date(' Y') }})</p>
@@ -20,6 +20,121 @@
 			</span>
 		</p>
 
-		<p>{{article.description|raw }}</p>
+		<br>
+
+		<p class="card-text">
+			{{article.content|raw }}
+		</p>
+
+		<br><br>
+
+		<section class="shadow article-section-vocabulaire">
+			<h4 class="text-dark">
+				<i class="fas fa-box-open me-1"></i>
+				Vocabulaire
+			</h4>
+
+			<div class="row row-cols-1 row-cols-md-2 g-4 mt-1 mb-2">
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<p class="card-text">
+								{{ article.vocabulaire1|raw }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<p class="card-text">
+								{{ article.vocabulaire2|raw }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<p class="card-text">
+								{{ article.vocabulaire3|raw }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<p class="card-text">
+								{{ article.vocabulaire4|raw }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<p class="card-text">
+								{{ article.vocabulaire5|raw }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<p class="card-text">
+								{{ article.vocabulaire6|raw }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<p class="card-text">
+								{{ article.vocabulaire7|raw }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<p class="card-text">
+								{{ article.vocabulaire8|raw }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<p class="card-text">
+								{{ article.vocabulaire9|raw }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<p class="card-text">
+								{{ article.vocabulaire10|raw }}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
 {% endblock %}
