@@ -1,3 +1,7 @@
 body{
     padding: 100px;
 }
+.card-article-createdAt{
+    font-size:16px;
+    font-weight: normal;
+}
