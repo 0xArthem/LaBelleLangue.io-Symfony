@@ -32,4 +32,18 @@ class HomeController extends AbstractController
             'niveaux' => $niveaux
         ]);
     }
+
+    /**
+     * @Route("/theme/{slug}", name="theme")
+     */
+    public function theme($slug, ThemeRepository $themeRepository, ArticleRepository $articleRepository): Response
+    {
+        $theme = $themeRepository->findOneBy(['slug' => $slug]);
+        $articles = $articleRepository->findBy(['theme' => $theme], ['id' => 'DESC']);
+
+        return $this->render('home/theme.html.twig', [
+            'theme' => $theme,
+            'articles' => $articles
+        ]);
+    }
 }

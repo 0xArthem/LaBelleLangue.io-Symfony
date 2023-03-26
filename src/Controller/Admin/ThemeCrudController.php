@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
 class ThemeCrudController extends AbstractCrudController
@@ -30,6 +31,8 @@ class ThemeCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm()->hideOnIndex()->setLabel('ID'),
             TextField::new('name')->setLabel('Nom'),
+            TextField::new('slug')->setLabel('Slug'),
+            // SlugField::new('slug')->setTargetFieldName('name')->hideOnIndex()->setLabel('Slug'),
             TextareaField::new('description')->setLabel('Description')
         ];
     }
