@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\ArticleRepository;
 use App\Repository\NiveauRepository;
 use App\Repository\ThemeRepository;
+use App\Repository\VocabulaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -65,12 +66,14 @@ class HomeController extends AbstractController
     /**
      * @Route("/article/{slug}", name="article")
      */
-    public function article($slug, ArticleRepository $articleRepository): Response
+    public function article($slug, ArticleRepository $articleRepository, VocabulaireRepository $vocabulaireRepository): Response
     {
         $article = $articleRepository->findOneBy(['slug' => $slug]);
+        $vocabulaires = $article->getVocabulaires();
 
         return $this->render('home/article.html.twig', [
-            'article' => $article
+            'article' => $article,
+            'vocabulaires' => $vocabulaires
         ]);
     }
 }
