@@ -8,32 +8,54 @@ use App\Repository\LeconCategorieRepository;
 use App\Repository\LeconRepository;
 use App\Repository\NiveauRepository;
 use App\Repository\ThemeRepository;
-use App\Repository\VocabulaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+    private $leconCategorieRepository;
+    private $leconRepository;
+    private $articleRepository;
+    private $themeRepository;
+    private $niveauRepository;
+    private $dialogueRepository;
+
+    public function __construct(
+        LeconCategorieRepository $leconCategorieRepository, 
+        LeconRepository $leconRepository, 
+        ArticleRepository $articleRepository, 
+        ThemeRepository $themeRepository, 
+        NiveauRepository $niveauRepository,
+        DialogueRepository $dialogueRepository
+    ) {
+        $this->leconCategorieRepository = $leconCategorieRepository;
+        $this->leconRepository = $leconRepository;
+        $this->articleRepository = $articleRepository;
+        $this->themeRepository = $themeRepository;
+        $this->niveauRepository = $niveauRepository;
+        $this->dialogueRepository = $dialogueRepository;
+    }
+
     /**
      * @Route("/", name="home")
      */
-    public function index(LeconCategorieRepository $leconCategorieRepository, LeconRepository $leconRepository, ArticleRepository $articleRepository, ThemeRepository $themeRepository, NiveauRepository $niveauRepository): Response
+    public function index(): Response
     {
 
         /**on récupère les 3 derniers articles dont la propriété de type booléen isActive est true et par ordre décroissant */
-        $articles = $articleRepository->findBy(array('isActive' => true), array('id' => 'DESC'), 3, 0);
+        $articles = $this->articleRepository->findBy(array('isActive' => true), array('id' => 'DESC'), 3, 0);
 
         /**on récupère les thèmes par ordre décroissant */
-        $themes = $themeRepository->findBy(array(), array('id' => 'DESC'));
+        $themes = $this->themeRepository->findBy(array(), array('id' => 'DESC'));
 
         /**on récupère les niveaux par ordre croissant */
-        $niveaux = $niveauRepository->findBy(array(), array('id' => 'ASC'));
+        $niveaux = $this->niveauRepository->findBy(array(), array('id' => 'ASC'));
 
         /**on récupère les leçons */
-        $lecons = $leconRepository->findBy(array('isActive' => true), array('id' => 'ASC'));
+        $lecons = $this->leconRepository->findBy(array('isActive' => true), array('id' => 'ASC'));
 
-        $categories = $leconCategorieRepository->findAll();
+        $categories = $this->leconCategorieRepository->findAll();
 
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
@@ -47,9 +69,9 @@ class HomeController extends AbstractController
      /**
      * @Route("/lecon/{slug}", name="lecon")
      */
-    public function lecon($slug, LeconRepository $leconRepository, ArticleRepository $articleRepository): Response
+    public function lecon($slug): Response
     {
-        $lecon = $leconRepository->findOneBy(['slug' => $slug]);
+        $lecon = $this->leconRepository->findOneBy(['slug' => $slug]);
         $article = $lecon->getArticle();
 
         return $this->render('home/lecon.html.twig', [
@@ -61,10 +83,10 @@ class HomeController extends AbstractController
     /**
      * @Route("/categorie/{slug}", name="categorie")
      */
-    public function categorie($slug, LeconCategorieRepository $leconCategorieRepository, LeconRepository $leconRepository): Response
+    public function categorie($slug): Response
     {
-        $categorie = $leconCategorieRepository->findOneBy(['slug' => $slug]);
-        $lecons = $leconRepository->findBy(['categorie' => $categorie], ['id' => 'DESC']);
+        $categorie = $this->leconCategorieRepository->findOneBy(['slug' => $slug]);
+        $lecons = $this->leconRepository->findBy(['categorie' => $categorie], ['id' => 'DESC']);
 
         return $this->render('home/lecon-categorie.html.twig', [
             'categorie' => $categorie,
@@ -75,10 +97,10 @@ class HomeController extends AbstractController
     /**
      * @Route("/theme/{slug}", name="theme")
      */
-    public function theme($slug, ThemeRepository $themeRepository, ArticleRepository $articleRepository): Response
+    public function theme($slug): Response
     {
-        $theme = $themeRepository->findOneBy(['slug' => $slug]);
-        $articles = $articleRepository->findBy(['theme' => $theme], ['id' => 'DESC']);
+        $theme = $this->themeRepository->findOneBy(['slug' => $slug]);
+        $articles = $this->articleRepository->findBy(['theme' => $theme], ['id' => 'DESC']);
 
         return $this->render('home/theme.html.twig', [
             'theme' => $theme,
@@ -89,11 +111,11 @@ class HomeController extends AbstractController
     /**
      * @Route("/niveau/{slug}", name="niveau")
      */
-    public function niveau($slug, NiveauRepository $niveauRepository, ArticleRepository $articleRepository): Response
+    public function niveau($slug): Response
     {
 
-        $niveau = $niveauRepository->findOneBy(['slug' => $slug]);
-        $articles = $articleRepository->findBy(['niveau' => $niveau], ['id' => 'DESC']);
+        $niveau = $this->niveauRepository->findOneBy(['slug' => $slug]);
+        $articles = $this->articleRepository->findBy(['niveau' => $niveau], ['id' => 'DESC']);
 
         return $this->render('home/niveau.html.twig', [
             'niveau' => $niveau,
@@ -104,12 +126,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/article/{slug}", name="article")
      */
-    public function article($slug, ArticleRepository $articleRepository, VocabulaireRepository $vocabulaireRepository, DialogueRepository $dialogueRepository): Response
+    public function article($slug): Response
     {
-        $article = $articleRepository->findOneBy(['slug' => $slug]);
+        $article = $this->articleRepository->findOneBy(['slug' => $slug]);
         $vocabulaires = $article->getVocabulaires();
 
-        $dialogue = $dialogueRepository->findOneBy(['article' => $article]);
+        $dialogue = $this->dialogueRepository->findOneBy(['article' => $article]);
 
         return $this->render('home/article.html.twig', [
             'article' => $article,
