@@ -39,7 +39,6 @@ class Niveau
         return $this->name;
     }
 
-
     public function __construct()
     {
         $this->articles = new ArrayCollection();

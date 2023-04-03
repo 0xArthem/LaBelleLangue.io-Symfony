@@ -77,6 +77,11 @@ class Article
      */
     private $lienYoutube;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Dialogue::class, mappedBy="article")
+     */
+    private $dialogues;
+
     public function __toString()
     {
         return $this->title;
@@ -86,6 +91,7 @@ class Article
     {
         $this->createdAt = new DateTime();
         $this->vocabulaires = new ArrayCollection();
+        $this->dialogues = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -239,6 +245,36 @@ class Article
     public function setLienYoutube(?string $lienYoutube): self
     {
         $this->lienYoutube = $lienYoutube;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Dialogue>
+     */
+    public function getDialogues(): Collection
+    {
+        return $this->dialogues;
+    }
+
+    public function addDialogue(Dialogue $dialogue): self
+    {
+        if (!$this->dialogues->contains($dialogue)) {
+            $this->dialogues[] = $dialogue;
+            $dialogue->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDialogue(Dialogue $dialogue): self
+    {
+        if ($this->dialogues->removeElement($dialogue)) {
+            // set the owning side to null (unless already changed)
+            if ($dialogue->getArticle() === $this) {
+                $dialogue->setArticle(null);
+            }
+        }
 
         return $this;
     }

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use App\Entity\Dialogue;
 use App\Entity\Niveau;
 use App\Entity\Theme;
 use App\Entity\Vocabulaire;
@@ -32,6 +33,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Article', 'fas fa-list', Article::class);
+        yield MenuItem::linkToCrud('Dialogue', 'fas fa-list', Dialogue::class);
         yield MenuItem::linkToCrud('Vocabulaire', 'fas fa-list', Vocabulaire::class);
         yield MenuItem::linkToCrud('Thème', 'fas fa-list', Theme::class);
         yield MenuItem::linkToCrud('Niveau', 'fas fa-list', Niveau::class);

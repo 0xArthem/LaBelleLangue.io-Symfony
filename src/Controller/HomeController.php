@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ArticleRepository;
+use App\Repository\DialogueRepository;
 use App\Repository\NiveauRepository;
 use App\Repository\ThemeRepository;
 use App\Repository\VocabulaireRepository;
@@ -66,14 +67,17 @@ class HomeController extends AbstractController
     /**
      * @Route("/article/{slug}", name="article")
      */
-    public function article($slug, ArticleRepository $articleRepository, VocabulaireRepository $vocabulaireRepository): Response
+    public function article($slug, ArticleRepository $articleRepository, VocabulaireRepository $vocabulaireRepository, DialogueRepository $dialogueRepository): Response
     {
         $article = $articleRepository->findOneBy(['slug' => $slug]);
         $vocabulaires = $article->getVocabulaires();
 
+        $dialogue = $dialogueRepository->findOneBy(['article' => $article]);
+
         return $this->render('home/article.html.twig', [
             'article' => $article,
-            'vocabulaires' => $vocabulaires
+            'vocabulaires' => $vocabulaires,
+            'dialogue' => $dialogue
         ]);
     }
 }

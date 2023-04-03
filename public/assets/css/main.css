@@ -14,10 +14,6 @@ body {
 .card-niveau {
   background-color: #262626 !important;
 }
-.article-section-vocabulaire {
-  border-radius: 5px;
-  padding: 25px;
-}
 .badge-word-solution {
   color: #262626 !important;
   font-weight: normal !important;
@@ -57,7 +53,21 @@ body {
   display: flex;
   justify-content: center;
 
-  padding: 60px;
+  padding: 50px;
   font-size: 25px;
 }
 /**/
+.nav-link-pills-dialogue {
+  text-transform: none !important;
+  font-size: 15px !important;
+  color: black !important;
+  font-weight: normal !important;
+  padding: 15px !important;
+}
+.nav-pills {
+  display: flex !important;
+  justify-content: right !important;
+}
+.section-article-content-text {
+  margin-top: 15px;
+}
