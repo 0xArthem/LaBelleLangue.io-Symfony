@@ -12,7 +12,7 @@
 
 		<div class="row row-cols-1 row-cols-md-3 g-4">
 			{% for lecon in lecons %}
-				<a href="{{ path('lecon', {'slug':lecon.slug}) }}">
+				<a href="{{ path('lecon', {'slug':lecon.slug}) }}" class="text-dark">
 					<div class="col">
 						<div class="card h-100">
 							<div class="card-body">
@@ -24,7 +24,25 @@
 								</p>
 							</div>
 							<div class="card-footer">
-								<p class="card-text">Last updated 3 mins ago</p>
+								<p class="card-text">
+									{{ lecon.categorie }}
+								</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+
+		<br><br>
+
+		<div class="row row-cols-1 row-cols-md-4 g-4">
+			{% for categorie in categories %}
+				<a href="{{ path('categorie', {'slug':categorie.slug}) }}">
+					<div class="col">
+						<div class="card card-niveau">
+							<div class="card-body card-niveau-body">
+								{{ categorie.name}}
 							</div>
 						</div>
 					</div>

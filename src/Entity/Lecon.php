@@ -70,6 +70,11 @@ class Lecon
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=LeconCategorie::class, inversedBy="lecons")
+     */
+    private $categorie;
+
     public function __construct()
     {
         $this->article = new ArrayCollection();
@@ -197,6 +202,18 @@ class Lecon
     public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?LeconCategorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?LeconCategorie $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

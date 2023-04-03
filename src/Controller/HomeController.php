@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ArticleRepository;
 use App\Repository\DialogueRepository;
+use App\Repository\LeconCategorieRepository;
 use App\Repository\LeconRepository;
 use App\Repository\NiveauRepository;
 use App\Repository\ThemeRepository;
@@ -17,7 +18,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(LeconRepository $leconRepository, ArticleRepository $articleRepository, ThemeRepository $themeRepository, NiveauRepository $niveauRepository): Response
+    public function index(LeconCategorieRepository $leconCategorieRepository, LeconRepository $leconRepository, ArticleRepository $articleRepository, ThemeRepository $themeRepository, NiveauRepository $niveauRepository): Response
     {
 
         /**on récupère les 3 derniers articles dont la propriété de type booléen isActive est true et par ordre décroissant */
@@ -32,11 +33,14 @@ class HomeController extends AbstractController
         /**on récupère les leçons */
         $lecons = $leconRepository->findBy(array('isActive' => true), array('id' => 'ASC'));
 
+        $categories = $leconCategorieRepository->findAll();
+
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
             'themes' => $themes,
             'niveaux' => $niveaux,
-            'lecons' => $lecons
+            'lecons' => $lecons,
+            'categories' => $categories
         ]);
     }
 
@@ -51,6 +55,20 @@ class HomeController extends AbstractController
         return $this->render('home/lecon.html.twig', [
             'lecon' => $lecon,
             'article' => $article
+        ]);
+    }
+
+    /**
+     * @Route("/categorie/{slug}", name="categorie")
+     */
+    public function categorie($slug, LeconCategorieRepository $leconCategorieRepository, LeconRepository $leconRepository): Response
+    {
+        $categorie = $leconCategorieRepository->findOneBy(['slug' => $slug]);
+        $lecons = $leconRepository->findBy(['categorie' => $categorie], ['id' => 'DESC']);
+
+        return $this->render('home/lecon-categorie.html.twig', [
+            'categorie' => $categorie,
+            'lecons' => $lecons
         ]);
     }
 

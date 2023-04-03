@@ -28,6 +28,7 @@ class LeconCrudController extends AbstractCrudController
             TextField::new('title')->setLabel('Titre'),
             TextField::new('slug')->setLabel('URL'),
             AssociationField::new('article')->setLabel('Article en lien'),
+            AssociationField::new('categorie')->setLabel('Catégorie'),
             TextEditorField::new('presentation')->setLabel('Présentation'),
             TextEditorField::new('content')->setLabel('Contenu'),
             ImageField::new('image1')->setBasePath('/assets/images/')
@@ -43,7 +44,7 @@ class LeconCrudController extends AbstractCrudController
                 ->setRequired(false)
                 ->setLabel('Image 3'),
             BooleanField::new('isActive')->setLabel('Actif'),
-            DateTimeField::new('createdAt')->setLabel('Date de création')
+            DateTimeField::new('createdAt')->setLabel('Date de création'),
         ];
     }
 }
