@@ -30,13 +30,27 @@ class HomeController extends AbstractController
         $niveaux = $niveauRepository->findBy(array(), array('id' => 'ASC'));
 
         /**on récupère les leçons */
-        $lecons = $leconRepository->findAll();
+        $lecons = $leconRepository->findBy(array('isActive' => true), array('id' => 'ASC'));
 
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
             'themes' => $themes,
             'niveaux' => $niveaux,
             'lecons' => $lecons
+        ]);
+    }
+
+     /**
+     * @Route("/lecon/{slug}", name="lecon")
+     */
+    public function lecon($slug, LeconRepository $leconRepository, ArticleRepository $articleRepository): Response
+    {
+        $lecon = $leconRepository->findOneBy(['slug' => $slug]);
+        $article = $lecon->getArticle();
+
+        return $this->render('home/lecon.html.twig', [
+            'lecon' => $lecon,
+            'article' => $article
         ]);
     }
 

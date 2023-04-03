@@ -12,6 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 
 class LeconCrudController extends AbstractCrudController
 {
@@ -41,7 +42,8 @@ class LeconCrudController extends AbstractCrudController
                 ->setUploadDir('./public/assets/images/')
                 ->setRequired(false)
                 ->setLabel('Image 3'),
-            BooleanField::new('isActive')->setLabel('Actif')
+            BooleanField::new('isActive')->setLabel('Actif'),
+            DateTimeField::new('createdAt')->setLabel('Date de création')
         ];
     }
 }

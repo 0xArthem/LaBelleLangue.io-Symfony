@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+	<div>
+		<h1>{{ lecon.title }}</h1>
+
+		<br>
+
+		<p>
+			{{ lecon.content|raw }}
+		</p>
+
+		<br>
+		<h4>Article dans lequel ces notions sont abordés :</h4>
+		<a href="{{ path('article', {'slug':article.slug}) }}">
+			{{ lecon.article }}
+		</a>
+
+		<br><br>
+
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+			<div class="col">
+				{% if lecon.image1 %}
+					<img src="/assets/images/{{ lecon.image1 }}" class="card-img-lecon" alt="{{ lecon.title }}">
+				{% endif %}
+			</div>
+			<div class="col">
+				{% if lecon.image2 %}
+					<img src="/assets/images/{{ lecon.image2 }}" class="card-img-lecon" alt="{{ lecon.title }}">
+				{% endif %}
+			</div>
+			<div class="col">
+				{% if lecon.image3 %}
+					<img src="/assets/images/{{ lecon.image3 }}" class="card-img-lecon" alt="{{ lecon.title }}">
+				{% endif %}
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

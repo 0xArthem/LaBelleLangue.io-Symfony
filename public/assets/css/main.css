@@ -72,3 +72,7 @@ body {
   margin-top: 15px;
   font-size: 18px !important;
 }
+/**/
+.card-img-lecon {
+  border-radius: 5px !important;
+}
