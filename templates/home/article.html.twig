@@ -20,13 +20,20 @@
 			</span>
 		</p>
 
-		<br>
+		<div class="section-article-video">
+			<div id="section-article-video-gauche">
+				<iframe class="iframe-video-article shadow" src="{{ article.lienYoutube }}" frameborder="0"></iframe>
+			</div>
+			<div id="section-article-video-droite">
+				<p class="card-text">
+					{{article.content|raw }}
+				</p>
+			</div>
+		</div>
 
-		<p class="card-text">
-			{{article.content|raw }}
-		</p>
-
-		<br><br>
+		<section class="section-center">
+			<i class="fas fa-angles-down"></i>
+		</section>
 
 		<section class="shadow article-section-vocabulaire">
 			<h4 class="text-dark">
@@ -49,7 +56,5 @@
 					</div>
 				{% endfor %}
 			</div>
-
 		</section>
-	</div>
-{% endblock %}
+	{% endblock %}

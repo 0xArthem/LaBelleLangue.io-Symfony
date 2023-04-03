@@ -1,20 +1,63 @@
-body{
-    padding: 100px;
+body {
+  padding: 100px;
 }
-.card-article-createdAt{
-    font-size:16px;
-    font-weight: normal;
+.card-article-createdAt {
+  font-size: 16px;
+  font-weight: normal;
 }
-.card-niveau-body{
-    font-size: 17.5px;
-    text-align: center;
-    color: white !important;
-    padding-bottom: 20px !important;
+.card-niveau-body {
+  font-size: 17.5px;
+  text-align: center;
+  color: white !important;
+  padding-bottom: 20px !important;
 }
-.card-niveau{
-    background-color: #262626 !important;
+.card-niveau {
+  background-color: #262626 !important;
 }
-.article-section-vocabulaire{
-    border-radius: 5px;
-    padding: 25px;
+.article-section-vocabulaire {
+  border-radius: 5px;
+  padding: 25px;
 }
+.badge-word-solution {
+  color: #262626 !important;
+  font-weight: normal !important;
+  transition-duration: 0.3s !important;
+
+  font-size: 14px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  text-transform: lowercase !important;
+}
+.badge-word-solution:hover {
+  color: white !important;
+  transition-duration: 0.3s !important;
+}
+/**/
+.iframe-video-article {
+  border-radius: 5px !important;
+  margin-top: 20px !important;
+  margin-bottom: 8px !important;
+
+  width: 500px;
+  height: 632px;
+}
+.section-article-video {
+  display: flex;
+}
+#section-article-video-droite {
+  flex: 2;
+  padding-left: 25px;
+}
+#section-article-video-gauche {
+  flex: 1;
+}
+.section-center {
+  display: flex;
+  justify-content: center;
+
+  padding: 60px;
+  font-size: 25px;
+}
+/**/

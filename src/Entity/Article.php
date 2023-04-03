@@ -72,6 +72,11 @@ class Article
      */
     private $vocabulaires;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lienYoutube;
+
     public function __toString()
     {
         return $this->title;
@@ -222,6 +227,18 @@ class Article
                 $vocabulaire->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLienYoutube(): ?string
+    {
+        return $this->lienYoutube;
+    }
+
+    public function setLienYoutube(?string $lienYoutube): self
+    {
+        $this->lienYoutube = $lienYoutube;
 
         return $this;
     }
