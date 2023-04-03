@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ArticleRepository;
 use App\Repository\DialogueRepository;
+use App\Repository\LeconRepository;
 use App\Repository\NiveauRepository;
 use App\Repository\ThemeRepository;
 use App\Repository\VocabulaireRepository;
@@ -16,7 +17,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ArticleRepository $articleRepository, ThemeRepository $themeRepository, NiveauRepository $niveauRepository): Response
+    public function index(LeconRepository $leconRepository, ArticleRepository $articleRepository, ThemeRepository $themeRepository, NiveauRepository $niveauRepository): Response
     {
 
         /**on récupère les 3 derniers articles dont la propriété de type booléen isActive est true et par ordre décroissant */
@@ -28,10 +29,14 @@ class HomeController extends AbstractController
         /**on récupère les niveaux par ordre croissant */
         $niveaux = $niveauRepository->findBy(array(), array('id' => 'ASC'));
 
+        /**on récupère les leçons */
+        $lecons = $leconRepository->findAll();
+
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
             'themes' => $themes,
-            'niveaux' => $niveaux
+            'niveaux' => $niveaux,
+            'lecons' => $lecons
         ]);
     }
 

@@ -37,7 +37,7 @@ body {
   margin-bottom: 8px !important;
 
   width: 500px;
-  height: 632px;
+  height: 755px;
 }
 .section-article-video {
   display: flex;
@@ -70,4 +70,5 @@ body {
 }
 .section-article-content-text {
   margin-top: 15px;
+  font-size: 18px !important;
 }

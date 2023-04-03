@@ -82,6 +82,11 @@ class Article
      */
     private $dialogues;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Lecon::class, mappedBy="article")
+     */
+    private $lecons;
+
     public function __toString()
     {
         return $this->title;
@@ -92,6 +97,7 @@ class Article
         $this->createdAt = new DateTime();
         $this->vocabulaires = new ArrayCollection();
         $this->dialogues = new ArrayCollection();
+        $this->lecons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -273,6 +279,36 @@ class Article
             // set the owning side to null (unless already changed)
             if ($dialogue->getArticle() === $this) {
                 $dialogue->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Lecon>
+     */
+    public function getLecons(): Collection
+    {
+        return $this->lecons;
+    }
+
+    public function addLecon(Lecon $lecon): self
+    {
+        if (!$this->lecons->contains($lecon)) {
+            $this->lecons[] = $lecon;
+            $lecon->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLecon(Lecon $lecon): self
+    {
+        if ($this->lecons->removeElement($lecon)) {
+            // set the owning side to null (unless already changed)
+            if ($lecon->getArticle() === $this) {
+                $lecon->setArticle(null);
             }
         }
 
