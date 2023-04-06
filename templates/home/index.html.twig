@@ -5,16 +5,58 @@
 
 {% block body %}
 	{% set mois_fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'] %}
-	<div style="padding:100px;">
-		<section>
+	<div style="padding-left:100px;padding-right:100px;padding-bottom:100px;">
+		<section class="lp-section-accueil">
 			<h1 class="lp-h1">
 				LaBelleLangue<span class="lp-h1-span">.io</span>
 			</h1>
+			<h2 class="lp-h2">
+				Apprenez
+				<span class="lp-h2-span">la langue de l'amour</span>
+				& explorer le
+				<span class="lp-h2-span-deux">monde</span>.
+			</h2>
 
-			<a href="{{ path('payant')}}">Espace payant</a>
+			<section class="d-flex justify-content-center">
+				<button class="btn btn-CTA">
+					Je veux apprendre le français !
+				</button>
+			</section>
+
+			<div class="d-flex justify-content-center py-5">
+				<i class="fas fa-angle-down text-dark"></i>
+			</div>
+
+			<section class="lp-section-accueil-section-argument">
+				<button class="btn btn-argument">
+					<i class="fas fa-check icon-btn-argument"></i>
+					Créer des opportunités professionnelles
+				</button>
+				<button class="btn btn-argument">
+					<i class="fas fa-check icon-btn-argument"></i>
+					Intégrer les instances diplomatiques internationales
+				</button>
+				<button class="btn btn-argument">
+					<i class="fas fa-check icon-btn-argument"></i>
+					Elargir vos horizons culturels
+				</button>
+				<button class="btn btn-argument">
+					<i class="fas fa-check icon-btn-argument"></i>
+					Voyager dans les 88 pays et territoires francophones
+				</button>
+				<button class="btn btn-argument">
+					<i class="fas fa-check icon-btn-argument"></i>
+					Entrer dans l'école de votre choix
+				</button>
+			</section>
+
+			<br><br><br>
+
+			<section class="shadow" id="lp-section-accueil-section"></section>
+
 		</section>
 
-		<br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 		{% include "includes/home/card-articles.html.twig" %}
 
