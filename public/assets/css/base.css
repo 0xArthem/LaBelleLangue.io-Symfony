@@ -1,0 +1,57 @@
+#header {
+  padding-left: 100px !important;
+  padding-right: 100px !important;
+  box-shadow: none !important;
+  padding-top: 25px !important;
+  padding-bottom: 50px !important;
+  background-color: var(--second) !important;
+}
+.nav-link-marque {
+  background-color: var(--main) !important;
+  border-radius: 100px !important;
+  color: var(--second) !important;
+  font-size: 17px !important;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
+}
+#nav-link-marque-span {
+  color: var(--third);
+}
+.nav-link-center {
+  color: var(--main) !important;
+  font-size: 17px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+.nav-link-center:hover {
+  color: var(--third) !important;
+}
+.nav-link-right {
+  color: var(--main) !important;
+  font-size: 17px !important;
+  padding-left: 20px !important;
+  /* padding-right: 20px !important; */
+}
+.nav-link-right:hover {
+  color: var(--third) !important;
+}
+.nav-link-caret-right {
+  color: var(--third) !important;
+}
+
+/*** NAVBAR **/
+.navbar-nav-link {
+  color: var(--main) !important;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
+}
+#navbar {
+  background-color: var(--second) !important;
+  margin-left: 5% !important;
+  margin-right: 5% !important;
+  border-radius: 100px !important;
+  margin-top: -27.5px !important;
+}
+.icon-navbar-nav-link {
+  color: var(--main) !important;
+}

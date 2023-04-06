@@ -1,0 +1,7 @@
+.lp-h1 {
+  color: var(--main) !important;
+  text-align: center;
+}
+.lp-h1-span {
+  color: var(--third);
+}
