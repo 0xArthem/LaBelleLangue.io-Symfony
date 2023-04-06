@@ -1,0 +1,13 @@
+<div class="row row-cols-1 row-cols-md-4 g-4">
+	{% for niveau in niveaux %}
+		<a href="{{ path('membre_niveau', {'slug':niveau.slug}) }}">
+			<div class="col">
+				<div class="card card-niveau">
+					<div class="card-body card-niveau-body">
+						{{ niveau.name}}
+					</div>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>

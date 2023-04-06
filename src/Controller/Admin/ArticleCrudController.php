@@ -43,7 +43,8 @@ class ArticleCrudController extends AbstractCrudController
             AssociationField::new('niveau')->setLabel('Niveau'),
             AssociationField::new('theme')->setLabel('Thème'),
             DateField::new('createdAt')->setLabel('Publié le'),
-            BooleanField::new('isActive')->setLabel('Afficher')
+            BooleanField::new('isActive')->setLabel('Afficher'),
+            BooleanField::new('isFree')->setLabel('Gratuit')
         ];
     }
 }

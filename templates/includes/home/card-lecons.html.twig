@@ -1,0 +1,23 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+	{% for lecon in lecons %}
+		<a href="{{ path('lecon', {'slug':lecon.slug}) }}" class="text-dark">
+			<div class="col">
+				<div class="card h-100">
+					<div class="card-body">
+						<h5 class="card-title text-dark">
+							{{ lecon.title }}
+						</h5>
+						<p class="card-text">
+							{{ lecon.presentation|raw }}
+						</p>
+					</div>
+					<div class="card-footer">
+						<p class="card-text">
+							{{ lecon.categorie }}
+						</p>
+					</div>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>

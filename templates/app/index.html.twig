@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AppController!
+{% endblock %}
+
+{% block body %}
+	<div>
+		<h1>Mon espace payant</h1>
+		<p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, dignissimos, hic delectus, quia eos id rem sit aliquid nulla rerum quod vitae atque amet neque officiis ad suscipit nobis soluta.
+		</p>
+	</div>
+
+	{% set mois_fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'] %}
+	<div>
+		<br><br>
+
+		{% include "includes/app/card-articles.html.twig" %}
+
+		<br><br>
+
+		{% include "includes/app/card-themes.html.twig" %}
+
+		<br><br>
+
+		{% include "includes/app/card-niveaux.html.twig" %}
+
+		<br><br>
+
+		{% include "includes/app/card-lecons.html.twig" %}
+
+		<br><br>
+
+		{% include "includes/app/card-categories-lecon.html.twig" %}
+	</div>
+{% endblock %}

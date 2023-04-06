@@ -87,6 +87,11 @@ class Article
      */
     private $lecons;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isFree = false;
+
     public function __toString()
     {
         return $this->title;
@@ -311,6 +316,18 @@ class Article
                 $lecon->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isIsFree(): ?bool
+    {
+        return $this->isFree;
+    }
+
+    public function setIsFree(bool $isFree): self
+    {
+        $this->isFree = $isFree;
 
         return $this;
     }

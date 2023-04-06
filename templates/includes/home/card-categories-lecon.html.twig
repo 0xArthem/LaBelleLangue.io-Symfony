@@ -1,0 +1,13 @@
+<div class="row row-cols-1 row-cols-md-4 g-4">
+	{% for categorie in categories %}
+		<a href="{{ path('categorie', {'slug':categorie.slug}) }}">
+			<div class="col">
+				<div class="card card-niveau">
+					<div class="card-body card-niveau-body">
+						{{ categorie.name}}
+					</div>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>

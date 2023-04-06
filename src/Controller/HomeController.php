@@ -2,15 +2,17 @@
 
 namespace App\Controller;
 
+use App\Repository\PlanRepository;
+use App\Repository\LeconRepository;
+use App\Repository\ThemeRepository;
+use App\Repository\NiveauRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\DialogueRepository;
 use App\Repository\LeconCategorieRepository;
-use App\Repository\LeconRepository;
-use App\Repository\NiveauRepository;
-use App\Repository\ThemeRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\SubscriptionRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -40,29 +42,26 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(PlanRepository $planRepository, SubscriptionRepository $subscriptionRepository): Response
     {
 
-        /**on récupère les 3 derniers articles dont la propriété de type booléen isActive est true et par ordre décroissant */
-        $articles = $this->articleRepository->findBy(array('isActive' => true), array('id' => 'DESC'), 3, 0);
-
-        /**on récupère les thèmes par ordre décroissant */
+        $articles = $this->articleRepository->findBy(array('isActive' => true,'isFree' => true), array('id' => 'DESC'),3,0);
         $themes = $this->themeRepository->findBy(array(), array('id' => 'DESC'));
-
-        /**on récupère les niveaux par ordre croissant */
         $niveaux = $this->niveauRepository->findBy(array(), array('id' => 'ASC'));
-
-        /**on récupère les leçons */
-        $lecons = $this->leconRepository->findBy(array('isActive' => true), array('id' => 'ASC'));
-
+        $lecons = $this->leconRepository->findBy(array('isActive' => true, 'isFree' => true), array('id' => 'DESC'));
         $categories = $this->leconCategorieRepository->findAll();
+        
+        // $plans = $planRepository->findAll();
+        // $activeSub = $subscriptionRepository->findActiveSub($this->getUser()->getId());
 
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
             'themes' => $themes,
             'niveaux' => $niveaux,
             'lecons' => $lecons,
-            'categories' => $categories
+            'categories' => $categories,
+            // 'plans' => $plans,
+            // 'activeSub' => $activeSub
         ]);
     }
 
@@ -71,7 +70,7 @@ class HomeController extends AbstractController
      */
     public function lecon($slug): Response
     {
-        $lecon = $this->leconRepository->findOneBy(['slug' => $slug]);
+        $lecon = $this->leconRepository->findOneBy(['slug' => $slug, 'isFree' => true]);
         $article = $lecon->getArticle();
 
         return $this->render('home/lecon.html.twig', [
@@ -86,7 +85,7 @@ class HomeController extends AbstractController
     public function categorie($slug): Response
     {
         $categorie = $this->leconCategorieRepository->findOneBy(['slug' => $slug]);
-        $lecons = $this->leconRepository->findBy(['categorie' => $categorie], ['id' => 'DESC']);
+        $lecons = $this->leconRepository->findBy(['categorie' => $categorie, 'isFree' => true], ['id' => 'DESC']);
 
         return $this->render('home/lecon-categorie.html.twig', [
             'categorie' => $categorie,
@@ -100,7 +99,7 @@ class HomeController extends AbstractController
     public function theme($slug): Response
     {
         $theme = $this->themeRepository->findOneBy(['slug' => $slug]);
-        $articles = $this->articleRepository->findBy(['theme' => $theme], ['id' => 'DESC']);
+        $articles = $this->articleRepository->findBy(['theme' => $theme, 'isFree' => true], ['id' => 'DESC']);
 
         return $this->render('home/theme.html.twig', [
             'theme' => $theme,
@@ -115,7 +114,7 @@ class HomeController extends AbstractController
     {
 
         $niveau = $this->niveauRepository->findOneBy(['slug' => $slug]);
-        $articles = $this->articleRepository->findBy(['niveau' => $niveau], ['id' => 'DESC']);
+        $articles = $this->articleRepository->findBy(['niveau' => $niveau, 'isFree' => true], ['id' => 'DESC']);
 
         return $this->render('home/niveau.html.twig', [
             'niveau' => $niveau,
@@ -128,7 +127,7 @@ class HomeController extends AbstractController
      */
     public function article($slug): Response
     {
-        $article = $this->articleRepository->findOneBy(['slug' => $slug]);
+        $article = $this->articleRepository->findOneBy(['slug' => $slug, 'isFree' => true]);
         $vocabulaires = $article->getVocabulaires();
 
         $dialogue = $this->dialogueRepository->findOneBy(['article' => $article]);

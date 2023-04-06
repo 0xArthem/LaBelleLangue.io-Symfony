@@ -44,6 +44,7 @@ class LeconCrudController extends AbstractCrudController
                 ->setRequired(false)
                 ->setLabel('Image 3'),
             BooleanField::new('isActive')->setLabel('Actif'),
+            BooleanField::new('isFree')->setLabel('Gratuit'),
             DateTimeField::new('createdAt')->setLabel('Date de création'),
         ];
     }

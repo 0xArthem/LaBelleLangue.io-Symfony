@@ -75,6 +75,11 @@ class Lecon
      */
     private $categorie;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isFree = false;
+
     public function __construct()
     {
         $this->article = new ArrayCollection();
@@ -214,6 +219,18 @@ class Lecon
     public function setCategorie(?LeconCategorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function isIsFree(): ?bool
+    {
+        return $this->isFree;
+    }
+
+    public function setIsFree(bool $isFree): self
+    {
+        $this->isFree = $isFree;
 
         return $this;
     }

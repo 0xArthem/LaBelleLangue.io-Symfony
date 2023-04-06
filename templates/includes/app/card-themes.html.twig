@@ -1,0 +1,19 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+	{% for theme in themes %}
+		<a href="{{ path('membre_theme', {'slug':theme.slug}) }}" class="text-dark">
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<i class="fas fa-layer-group me-1"></i>
+							{{ theme.name}}
+						</h5>
+						<p class="card-text">
+							{{ theme.description|striptags|length > 142 ? theme.description|striptags|slice(0, 142) ~ ' ...' : theme.description|striptags }}
+						</p>
+					</div>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>

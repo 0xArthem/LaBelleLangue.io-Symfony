@@ -8,88 +8,26 @@
 	<div>
 		<h1 class="text-center">Hello LaBelleLangue.io</h1>
 
-		<br><br>
-
-		<div class="row row-cols-1 row-cols-md-3 g-4">
-			{% for lecon in lecons %}
-				<a href="{{ path('lecon', {'slug':lecon.slug}) }}" class="text-dark">
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<h5 class="card-title text-dark">
-									{{ lecon.title }}
-								</h5>
-								<p class="card-text">
-									{{ lecon.presentation|raw }}
-								</p>
-							</div>
-							<div class="card-footer">
-								<p class="card-text">
-									{{ lecon.categorie }}
-								</p>
-							</div>
-						</div>
-					</div>
-				</a>
-			{% endfor %}
-		</div>
+		<a href="{{ path('payant')}}">Espace payant</a>
 
 		<br><br>
 
-		<div class="row row-cols-1 row-cols-md-4 g-4">
-			{% for categorie in categories %}
-				<a href="{{ path('categorie', {'slug':categorie.slug}) }}">
-					<div class="col">
-						<div class="card card-niveau">
-							<div class="card-body card-niveau-body">
-								{{ categorie.name}}
-							</div>
-						</div>
-					</div>
-				</a>
-			{% endfor %}
-		</div>
+		{% include "includes/home/card-articles.html.twig" %}
 
 		<br><br>
 
-		{% include "includes/card-article.html.twig" %}
+		{% include "includes/home/card-themes.html.twig" %}
 
 		<br><br>
 
-		<div class="row row-cols-1 row-cols-md-3 g-4">
-			{% for theme in themes %}
-				<a href="{{ path('theme', {'slug':theme.slug}) }}" class="text-dark">
-					<div class="col">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">
-									<i class="fas fa-layer-group me-1"></i>
-									{{ theme.name}}
-								</h5>
-								<p class="card-text">
-									{{ theme.description|striptags|length > 142 ? theme.description|striptags|slice(0, 142) ~ ' ...' : theme.description|striptags }}
-								</p>
-							</div>
-						</div>
-					</div>
-				</a>
-			{% endfor %}
-		</div>
+		{% include "includes/home/card-niveaux.html.twig" %}
 
 		<br><br>
 
-		<div class="row row-cols-1 row-cols-md-4 g-4">
-			{% for niveau in niveaux %}
-				<a href="{{ path('niveau', {'slug':niveau.slug}) }}">
-					<div class="col">
-						<div class="card card-niveau">
-							<div class="card-body card-niveau-body">
-								{{ niveau.name}}
-							</div>
-						</div>
-					</div>
-				</a>
-			{% endfor %}
-		</div>
+		{% include "includes/home/card-lecons.html.twig" %}
+
+		<br><br>
+
+		{% include "includes/home/card-categories-lecon.html.twig" %}
 	</div>
 {% endblock %}
