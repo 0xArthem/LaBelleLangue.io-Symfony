@@ -3,6 +3,9 @@
   --second: #fbfbfb;
   --third: #f24040;
 }
+body {
+  overflow-x: hidden;
+}
 .card-article-createdAt {
   font-size: 16px;
   font-weight: normal;

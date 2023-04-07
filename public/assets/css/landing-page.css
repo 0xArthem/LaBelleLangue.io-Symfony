@@ -26,9 +26,10 @@
   text-underline-offset: 6px;
 }
 #lp-section-accueil-section {
-  height: 500px;
+  padding: 50px;
+  padding-bottom: 65px !important;
   width: 100%;
-  background-color: var(--second);
+  /* background-color: var(--second); */
   border-radius: 10px;
 }
 .lp-section-accueil-section-argument {
@@ -58,4 +59,41 @@
   margin: 10px !important;
   background-color: var(--third) !important;
   border-radius: 100px !important;
+}
+.lp-section-accueil-section-h3 {
+  color: var(--third);
+  text-align: center;
+  font-weight: normal !important;
+  font-size: 27.5px !important;
+}
+.lp-section-accueil-section-h3-span {
+  color: var(--main) !important;
+}
+/** **/
+.lp-section-cartes-presentation {
+  padding-top: 10px;
+}
+.btn-rounded-carte-presentation {
+  margin-bottom: 15px !important;
+}
+.texte-carte-presentation {
+  margin-top: 10px !important;
+  /* margin-bottom: 15px !important; */
+  color: var(--main) !important;
+}
+.texte-carte-presentation-span {
+  /* font-weight: bold !important;: */
+  color: var(--third) !important;
+}
+.titre-carte-presentation {
+  color: var(--main) !important;
+  text-align: center;
+  font-size: 20px !important;
+  margin-top: -42.5px !important;
+}
+.card {
+  border-radius: 10px !important;
+}
+.carte-presentation-h3 {
+  color: var(--main) !important;
 }
