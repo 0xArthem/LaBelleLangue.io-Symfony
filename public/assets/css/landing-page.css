@@ -93,7 +93,15 @@
 }
 .card {
   border-radius: 10px !important;
+  background-color: var(--second) !important;
 }
 .carte-presentation-h3 {
   color: var(--main) !important;
+  font-size: 25px !important;
+}
+.lp-section-encadrement {
+  border-radius: 5px;
+  background-color: var(--third);
+  width: 100%;
+  height: 600px;
 }
