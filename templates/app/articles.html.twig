@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AppController!
+{% endblock %}
+
+{% block body %}
+	{% set mois_fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'] %}
+
+	<div>
+		{% include "includes/app/card-articles.html.twig" %}
+	</div>
+{% endblock %}

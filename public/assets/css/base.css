@@ -45,6 +45,9 @@
   padding-left: 25px !important;
   padding-right: 25px !important;
 }
+.navbar-nav-link:hover {
+  color: var(--third) !important;
+}
 #navbar {
   background-color: var(--second) !important;
   margin-left: 5% !important;

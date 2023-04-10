@@ -16,9 +16,9 @@
 		<br><br>
 
 		<section class="d-flex justify-content-center">
-			<button class="btn btn-CTA">
+			<a class="btn btn-CTA" href="{{ path('membre_articles') }}">
 				Consultez nos nouveaux articles ...
-			</button>
+			</a>
 		</section>
 		<br>
 		{% include "includes/app/card-articles.html.twig" %}
@@ -34,10 +34,10 @@
 		<br><br>
 
 		<section class="d-flex justify-content-center">
-			<button class="btn btn-CTA">
+			<a class="btn btn-CTA" href="{{ path('membre_lecons') }}">
 				... et les dernières leçons publiées !
 				<i class="fas fa-gem ms-1"></i>
-			</button>
+			</a>
 		</section>
 		<br>
 		{% include "includes/app/card-lecons.html.twig" %}

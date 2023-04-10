@@ -158,4 +158,92 @@ class AppController extends AbstractController
         }
         return $this->redirectToRoute('home');
     }
+
+    /****************/
+
+    /**
+     * @Route("/espace-membre/articles", name="membre_articles")
+     */
+    public function articles(): Response
+    {
+        $user = $this->getUser();
+
+        if ($user && $user->isPaiement()) {
+            $articles = $this->articleRepository->findBy(array('isActive' => true), array('id' => 'DESC'));
+
+            return $this->render('app/articles.html.twig', [
+                'articles' => $articles
+            ]);
+        }
+        return $this->redirectToRoute('home');
+    }
+
+     /**
+     * @Route("/espace-membre/themes", name="membre_themes")
+     */
+    public function themes(): Response
+    {
+        $user = $this->getUser();
+
+        if ($user && $user->isPaiement()) {
+            $themes = $this->themeRepository->findBy(array(), array('id' => 'DESC'));
+
+            return $this->render('app/themes.html.twig', [
+                'themes' => $themes
+            ]);
+        }
+        return $this->redirectToRoute('home');
+    }
+
+     /**
+     * @Route("/espace-membre/lecons", name="membre_lecons")
+     */
+    public function lecons(): Response
+    {
+        $user = $this->getUser();
+
+        if ($user && $user->isPaiement()) {
+            $lecons = $this->leconRepository->findBy(array('isActive' => true), array('id' => 'DESC'));
+
+            return $this->render('app/lecons.html.twig', [
+                'lecons' => $lecons
+            ]);
+        }
+        return $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/espace-membre/niveaux", name="membre_niveaux")
+     */
+    public function niveaux(): Response
+    {
+        $user = $this->getUser();
+
+        if ($user && $user->isPaiement()) {
+            $niveaux = $this->niveauRepository->findBy(array(), array('id' => 'DESC'));
+
+            return $this->render('app/niveaux.html.twig', [
+                'niveaux' => $niveaux
+            ]);
+        }
+        return $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/espace-membre/categories", name="membre_categories")
+     */
+    public function categories(): Response
+    {
+        $user = $this->getUser();
+
+        if ($user && $user->isPaiement()) {
+            $categories = $this->leconCategorieRepository->findBy(array(), array('id' => 'DESC'));
+
+            return $this->render('app/categories.html.twig', [
+                'categories' => $categories
+            ]);
+        }
+        return $this->redirectToRoute('home');
+    }
+
 }
