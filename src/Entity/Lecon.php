@@ -82,7 +82,8 @@ class Lecon
 
     public function __construct()
     {
-        $this->article = new ArrayCollection();
+        // $this->article = new ArrayCollection();
+        $this->article = null;
         $this->createdAt = new DateTime();
     }
 

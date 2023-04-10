@@ -8,5 +8,9 @@
 
 	<div>
 		{% include "includes/app/card-lecons.html.twig" %}
+
+		<div class="navigation">
+			{{ knp_pagination_render(lecons) }}
+		</div>
 	</div>
 {% endblock %}

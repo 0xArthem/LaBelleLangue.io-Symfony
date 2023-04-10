@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
+use App\Repository\PlanRepository;
+use App\Repository\LeconRepository;
+use App\Repository\ThemeRepository;
+use App\Repository\NiveauRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\DialogueRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use App\Repository\LeconCategorieRepository;
-use App\Repository\LeconRepository;
-use App\Repository\NiveauRepository;
-use App\Repository\PlanRepository;
-use App\Repository\ThemeRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AppController extends AbstractController
 {
@@ -164,13 +166,18 @@ class AppController extends AbstractController
     /**
      * @Route("/espace-membre/articles", name="membre_articles")
      */
-    public function articles(): Response
+    public function articles(PaginatorInterface $paginator, Request $request): Response
     {
         $user = $this->getUser();
 
         if ($user && $user->isPaiement()) {
-            $articles = $this->articleRepository->findBy(array('isActive' => true), array('id' => 'DESC'));
-
+            $query = $this->articleRepository->findBy(array('isActive' => true), array('id' => 'DESC'));
+            $articles = $paginator->paginate(
+                $query,
+                $request->query->get('page', 1),
+                12
+            );
+            
             return $this->render('app/articles.html.twig', [
                 'articles' => $articles
             ]);
@@ -198,12 +205,17 @@ class AppController extends AbstractController
      /**
      * @Route("/espace-membre/lecons", name="membre_lecons")
      */
-    public function lecons(): Response
+    public function lecons(PaginatorInterface $paginator, Request $request): Response
     {
         $user = $this->getUser();
 
         if ($user && $user->isPaiement()) {
-            $lecons = $this->leconRepository->findBy(array('isActive' => true), array('id' => 'DESC'));
+            $query = $this->leconRepository->findBy(array('isActive' => true), array('id' => 'DESC'));
+            $lecons = $paginator->paginate(
+                $query,
+                $request->query->get('page', 1),
+                12
+            );
 
             return $this->render('app/lecons.html.twig', [
                 'lecons' => $lecons
