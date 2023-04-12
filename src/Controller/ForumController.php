@@ -28,8 +28,11 @@ class ForumController extends AbstractController
     {
         $topic = $topicRepository->findOneBy(['slug' => $slug]);
 
+        $messages = $topic->getMessages();
+
         return $this->render('forum/topic.html.twig', [
-            'topic' => $topic
+            'topic' => $topic,
+            'messages' => $messages
         ]);
     }
 }

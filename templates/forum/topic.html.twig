@@ -28,5 +28,25 @@
 			</p>
 		{% endif %}
 
+		<br>
+
+		<section>
+			{% for message in messages %}
+				<div>
+					<p>
+						<i class="fas fa-reply-all text-danger"></i>
+						{{ message.message|raw }}
+					</p>
+					<p>
+						par
+						{{ message.user }}
+						le
+						{{ message.createdAt|date('d/m/y à H:i')}}
+					</p>
+				</div>
+				<br>
+			{% endfor %}
+		</section>
+
 	</div>
 {% endblock %}

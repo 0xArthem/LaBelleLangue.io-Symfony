@@ -6,6 +6,7 @@ use App\Entity\Article;
 use App\Entity\Dialogue;
 use App\Entity\Lecon;
 use App\Entity\LeconCategorie;
+use App\Entity\Message;
 use App\Entity\Niveau;
 use App\Entity\Theme;
 use App\Entity\Topic;
@@ -46,5 +47,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list', User::class);
         
         yield MenuItem::linkToCrud('Topic', 'fas fa-list', Topic::class);
+        yield MenuItem::linkToCrud('Message', 'fas fa-list', Message::class);
     }
 }
