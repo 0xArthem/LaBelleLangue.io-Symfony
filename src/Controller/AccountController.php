@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
- * @Route("/account")
+ * @Route("espace-membre/profil")
  */
 class AccountController extends AbstractController
 {
