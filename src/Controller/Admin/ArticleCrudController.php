@@ -42,6 +42,7 @@ class ArticleCrudController extends AbstractCrudController
             TextField::new('image')->hideOnIndex()->setLabel('Image'),
             AssociationField::new('niveau')->setLabel('Niveau'),
             AssociationField::new('theme')->setLabel('Thème'),
+            AssociationField::new('topic')->setLabel('Topic'),
             DateField::new('createdAt')->setLabel('Publié le'),
             BooleanField::new('isActive')->setLabel('Afficher'),
             BooleanField::new('isFree')->setLabel('Gratuit')

@@ -93,9 +93,9 @@ class Article
     private $isFree = false;
 
     /**
-     * @ORM\OneToMany(targetEntity=Topic::class, mappedBy="article")
+     * @ORM\OneToOne(targetEntity=Topic::class, mappedBy="article", cascade={"persist", "remove"})
      */
-    private $topics;
+    private $topic;
 
     public function __toString()
     {
@@ -108,7 +108,6 @@ class Article
         $this->vocabulaires = new ArrayCollection();
         $this->dialogues = new ArrayCollection();
         $this->lecons = new ArrayCollection();
-        $this->topics = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -338,32 +337,24 @@ class Article
         return $this;
     }
 
-    /**
-     * @return Collection<int, Topic>
-     */
-    public function getTopics(): Collection
+    public function getTopic(): ?Topic
     {
-        return $this->topics;
+        return $this->topic;
     }
 
-    public function addTopic(Topic $topic): self
+    public function setTopic(?Topic $topic): self
     {
-        if (!$this->topics->contains($topic)) {
-            $this->topics[] = $topic;
+        // unset the owning side of the relation if necessary
+        if ($topic === null && $this->topic !== null) {
+            $this->topic->setArticle(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($topic !== null && $topic->getArticle() !== $this) {
             $topic->setArticle($this);
         }
 
-        return $this;
-    }
-
-    public function removeTopic(Topic $topic): self
-    {
-        if ($this->topics->removeElement($topic)) {
-            // set the owning side to null (unless already changed)
-            if ($topic->getArticle() === $this) {
-                $topic->setArticle(null);
-            }
-        }
+        $this->topic = $topic;
 
         return $this;
     }

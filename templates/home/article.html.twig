@@ -67,6 +67,18 @@
 			</div>
 		</div>
 
+		<br>
+
+		{% if article.topic %}
+			<section class="d-flex justify-content-center">
+				<a class="btn btn-CTA" href="{{ path('topic', {'slug': article.topic.slug}) }}">
+					Voir le topic associé sur le forum
+					<i class="fas fa-right-long ms-1"></i>
+				</a>
+			</section>
+		{% endif %}
+
+
 		<section class="section-center">
 			<i class="fas fa-angles-down"></i>
 		</section>

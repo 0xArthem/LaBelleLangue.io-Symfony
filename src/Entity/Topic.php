@@ -45,14 +45,14 @@ class Topic
     private $isActive = false;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="topics")
-     */
-    private $article;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $slug;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Article::class, inversedBy="topic", cascade={"persist", "remove"})
+     */
+    private $article;
 
     public function __construct()
     {
@@ -147,6 +147,18 @@ class Topic
 
         return $this;
     }
+    
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
 
     public function getArticle(): ?Article
     {
@@ -156,18 +168,6 @@ class Topic
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
-
-        return $this;
-    }
-
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(?string $slug): self
-    {
-        $this->slug = $slug;
 
         return $this;
     }
