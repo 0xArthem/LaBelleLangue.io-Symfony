@@ -92,6 +92,11 @@ class Article
      */
     private $isFree = false;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Topic::class, mappedBy="article")
+     */
+    private $topics;
+
     public function __toString()
     {
         return $this->title;
@@ -103,6 +108,7 @@ class Article
         $this->vocabulaires = new ArrayCollection();
         $this->dialogues = new ArrayCollection();
         $this->lecons = new ArrayCollection();
+        $this->topics = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -328,6 +334,36 @@ class Article
     public function setIsFree(bool $isFree): self
     {
         $this->isFree = $isFree;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Topic>
+     */
+    public function getTopics(): Collection
+    {
+        return $this->topics;
+    }
+
+    public function addTopic(Topic $topic): self
+    {
+        if (!$this->topics->contains($topic)) {
+            $this->topics[] = $topic;
+            $topic->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTopic(Topic $topic): self
+    {
+        if ($this->topics->removeElement($topic)) {
+            // set the owning side to null (unless already changed)
+            if ($topic->getArticle() === $this) {
+                $topic->setArticle(null);
+            }
+        }
 
         return $this;
     }

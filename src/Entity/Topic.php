@@ -39,6 +39,16 @@ class Topic
      */
     private $messages;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive = false;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="topics")
+     */
+    private $article;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -112,6 +122,30 @@ class Topic
                 $message->setTopic(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }

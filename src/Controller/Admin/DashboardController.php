@@ -8,6 +8,7 @@ use App\Entity\Lecon;
 use App\Entity\LeconCategorie;
 use App\Entity\Niveau;
 use App\Entity\Theme;
+use App\Entity\Topic;
 use App\Entity\User;
 use App\Entity\Vocabulaire;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -43,5 +44,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Leçon', 'fas fa-list', Lecon::class);
         yield MenuItem::linkToCrud('Catégorie (Leçon)', 'fas fa-list', LeconCategorie::class);
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list', User::class);
+        
+        yield MenuItem::linkToCrud('Topic', 'fas fa-list', Topic::class);
     }
 }
