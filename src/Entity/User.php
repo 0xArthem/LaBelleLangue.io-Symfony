@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    private $paiement;
+    private $paiement = false;
 
     /**
      * @ORM\OneToMany(targetEntity=Subscription::class, mappedBy="user")
@@ -53,6 +53,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $stripeId;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pseudo;
 
     public function __construct()
     {
@@ -198,6 +203,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setStripeId(?string $stripeId): self
     {
         $this->stripeId = $stripeId;
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }

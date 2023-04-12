@@ -16,16 +16,34 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+        ->add('pseudo', TextType::class, [
+            'label' => false,
+            'attr' => [
+                'placeholder' => 'Pseudo',
+                'class' => 'form-control'
+            ],
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Veuillez entrer un pseudo.',
+                ]),
+                new Regex([
+                    'pattern' => '/^[a-zA-Z0-9]+$/',
+                    'message' => 'Le pseudo ne peut contenir que des lettres et des chiffres.',
+                ])
+            ],
+        ])
         ->add('email', EmailType::class, [
             'label' => false,
             'attr' => [
-                'placeholder' => 'Adresse électronique'
+                'placeholder' => 'Adresse électronique',
+                'class' => 'form-control mt-4'
             ],
             'constraints' => [
                 new NotBlank([
