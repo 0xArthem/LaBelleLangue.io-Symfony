@@ -20,4 +20,16 @@ class ForumController extends AbstractController
             'topics' => $topics
         ]);
     }
+
+    /**
+     * @Route("/forum/topic/{slug}", name="topic")
+     */
+    public function topic(TopicRepository $topicRepository, $slug): Response
+    {
+        $topic = $topicRepository->findOneBy(['slug' => $slug]);
+
+        return $this->render('forum/topic.html.twig', [
+            'topic' => $topic
+        ]);
+    }
 }

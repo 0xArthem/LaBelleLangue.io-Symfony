@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ForumController!
+{% endblock %}
+
+{% block body %}
+	<div class="encadrement">
+		<h1 class="text-center">Forum</h1>
+		<br>
+		<h2>
+			{{ topic.title}}
+		</h2>
+
+		{% if topic.message %}
+			<p>
+				{{ topic.message|raw }}
+			</p>
+		{% endif %}
+
+	</div>
+{% endblock %}
