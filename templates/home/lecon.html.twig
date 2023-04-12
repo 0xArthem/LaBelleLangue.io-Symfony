@@ -8,6 +8,22 @@
 		<h1>{{ lecon.title }}</h1>
 		<p>{{ lecon.categorie }}</p>
 
+
+		{% if lecon.likes > 0 or lecon.dislikes > 0 %}
+			<a>
+				{{ (lecon.likes * 100 / (lecon.likes + lecon.dislikes))|default(0)|round(0) }}% des apprenants ont aimé cette leçon. Et vous ?
+			</a>
+		{% endif %}
+		<br>
+		<a class="me-1" href="{{ path('lecon_like', {'id': lecon.id}) }}">
+			<i class="fas fa-thumbs-up icon-like"></i>
+		</a>
+		<a class="ms-1" href="{{ path('lecon_dislike', {'id': lecon.id}) }}">
+			<i class="fas fa-thumbs-down icon-like"></i>
+		</a>
+
+		<br>
+
 		<p>
 			{{ lecon.content|raw }}
 		</p>

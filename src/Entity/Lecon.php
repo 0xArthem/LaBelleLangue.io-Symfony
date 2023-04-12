@@ -80,6 +80,16 @@ class Lecon
      */
     private $isFree = false;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $likes = 0;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $dislikes = 0;
+
     public function __construct()
     {
         // $this->article = new ArrayCollection();
@@ -232,6 +242,30 @@ class Lecon
     public function setIsFree(bool $isFree): self
     {
         $this->isFree = $isFree;
+
+        return $this;
+    }
+
+    public function getLikes(): ?int
+    {
+        return $this->likes;
+    }
+
+    public function setLikes(int $likes): self
+    {
+        $this->likes = $likes;
+
+        return $this;
+    }
+
+    public function getDislikes(): ?int
+    {
+        return $this->dislikes;
+    }
+
+    public function setDislikes(int $dislikes): self
+    {
+        $this->dislikes = $dislikes;
 
         return $this;
     }

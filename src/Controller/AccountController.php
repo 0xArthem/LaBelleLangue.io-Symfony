@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Lecon;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,5 +46,29 @@ class AccountController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
+    }
+
+    /**
+     * @Route("/{id}/like", name="lecon_like")
+     */
+    public function like(Lecon $lecon): Response
+    {
+        $lecon->setLikes($lecon->getLikes() + 1);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+
+        return $this->redirectToRoute('membre_lecon', ['slug' => $lecon->getSlug()]);
+    }
+
+     /**
+     * @Route("/{id}/dislike", name="lecon_dislike")
+     */
+    public function dislike(Lecon $lecon): Response
+    {
+        $lecon->setDislikes($lecon->getDislikes() + 1);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+
+        return $this->redirectToRoute('membre_lecon', ['slug' => $lecon->getSlug()]);
     }
 }

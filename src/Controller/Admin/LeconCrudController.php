@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 
 class LeconCrudController extends AbstractCrudController
 {
@@ -25,6 +26,8 @@ class LeconCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm()->hideOnIndex(),
+            IntegerField::new('likes')->setLabel('J\'aime'),
+            IntegerField::new('dislikes')->setLabel('J\'aime pas'),
             TextField::new('title')->setLabel('Titre'),
             TextField::new('slug')->setLabel('URL'),
             AssociationField::new('article')->setLabel('Article en lien'),

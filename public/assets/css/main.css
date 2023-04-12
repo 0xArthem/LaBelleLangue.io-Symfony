@@ -98,3 +98,14 @@ body {
 .card-img-lecon {
   border-radius: 5px !important;
 }
+
+/***/
+.fa-thumbs-up {
+  color: #5fc767 !important;
+}
+.fa-thumbs-down {
+  color: var(--third) !important;
+}
+.icon-like:hover {
+  color: var(--main) !important;
+}
