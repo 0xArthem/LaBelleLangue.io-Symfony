@@ -18,12 +18,11 @@
 				</div>
 			{% endif %}
 
-			<h1>Connexion</h1>
+			<h1 class="text-center">Connexion</h1>
 
-			<label for="inputEmail">Email</label>
-			<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-			<label for="inputPassword">Mot de passe</label>
-			<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+			<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mt-4" autocomplete="email" required autofocus placeholder="Adresse électronique">
+
+			<input type="password" name="password" id="inputPassword" class="form-control mt-4" autocomplete="current-password" required placeholder="Mot de passe">
 
 			<input
 			type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -32,16 +31,15 @@
 
 			<br>
 
-			<a href="{{ path('app_register') }}" class="text-dark">
-				Pas encore inscrit(e) ?
-				<span class="fw-bold">Inscrivez-vous</span>.
-			</a>
-
-			<br>
-
 			<button class="btn btn-dark" type="submit">
 				Se connecter
 			</button>
 		</form>
+
+		<br>
+		<a href="{{ path('app_register') }}" class="text-dark">
+			Pas encore inscrit(e) ?
+			<span class="fw-bold">Inscrivez-vous</span>.
+		</a>
 	</div>
 {% endblock %}
