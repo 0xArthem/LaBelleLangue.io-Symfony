@@ -6,10 +6,21 @@
 {% block body %}
 	<div class="encadrement">
 		<h1 class="text-center">Forum</h1>
+
 		<br>
+
+		<a class="text-dark">
+			<i class="fas fa-caret-right me-1"></i>
+			{{ topic.article.title }}
+		</a>
 		<h2>
 			{{ topic.title}}
 		</h2>
+
+		<p class="card-text">
+			Publié le
+			{{ topic.createdAt|date('d/m/y')}}
+		</p>
 
 		{% if topic.message %}
 			<p>

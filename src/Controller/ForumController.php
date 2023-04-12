@@ -22,7 +22,7 @@ class ForumController extends AbstractController
     }
 
     /**
-     * @Route("/forum/topic/{slug}", name="topic")
+     * @Route("/forum/{slug}", name="topic")
      */
     public function topic(TopicRepository $topicRepository, $slug): Response
     {
