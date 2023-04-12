@@ -48,5 +48,18 @@
 			{% endfor %}
 		</section>
 
+		<section>
+			<h3>Ajouter un message</h3>
+
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<section class="d-flex justify-content-center">
+				<button type="submit" class="btn btn-CTA">
+					Publier
+				</button>
+			</section>
+			{{ form_end(form) }}
+		</section>
+
 	</div>
 {% endblock %}
