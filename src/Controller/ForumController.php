@@ -25,27 +25,31 @@ class ForumController extends AbstractController
             ->orderBy('t.id', 'DESC')
             ->getQuery();
 
-        $pagination = $paginator->paginate(
+        $topics = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            1
+            10
         );
 
         return $this->render('forum/index.html.twig', [
-            'topics' => $pagination,
+            'topics' => $topics,
         ]);
     }
 
     /**
      * @Route("/forum/{slug}", name="topic")
      */
-    public function topic(TopicRepository $topicRepository, $slug, Request $request, Security $security): Response
+    public function topic(PaginatorInterface $paginator, TopicRepository $topicRepository, $slug, Request $request, Security $security): Response
     {
         $topic = $topicRepository->findOneBy(['slug' => $slug]);
 
-        $messages = $topic->getMessages()->filter(function($message) {
-            return $message->isIsActive() === true;
-        });
+        $messages = $paginator->paginate(
+            $topic->getMessages()->filter(function($message) {
+                return $message->isIsActive() === true;
+            }),
+            $request->query->getInt('page', 1),
+            10
+        );
 
         $message = new Message();
         // Attribution du Topic au message, et de l'utilisateur

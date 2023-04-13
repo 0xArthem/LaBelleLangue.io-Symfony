@@ -63,6 +63,12 @@
 			{% endfor %}
 		</section>
 
+		<div class="pagination">
+			{{ knp_pagination_render(messages) }}
+		</div>
+
+		<br>
+
 		<section>
 			<h3>Ajouter un message</h3>
 
@@ -75,6 +81,5 @@
 			</section>
 			{{ form_end(form) }}
 		</section>
-
 	</div>
 {% endblock %}
