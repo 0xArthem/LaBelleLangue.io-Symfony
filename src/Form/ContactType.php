@@ -6,6 +6,7 @@ use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -41,6 +42,12 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'form-control mb-4',
                     'placeholder' => 'Numéro de téléphone (optionnel)'
+                ],
+                'constraints' => [
+                    new Regex([
+                        'pattern' => '/^\d+$/',
+                        'message' => 'Veuillez entrer uniquement des chiffres, ou ne pas entrer de numéro de téléphone.'
+                    ])
                 ]
             ])
             ->add('object', TextType::class, [

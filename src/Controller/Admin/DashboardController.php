@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use App\Entity\Contact;
 use App\Entity\Dialogue;
 use App\Entity\Lecon;
 use App\Entity\LeconCategorie;
@@ -48,5 +49,7 @@ class DashboardController extends AbstractDashboardController
         
         yield MenuItem::linkToCrud('Topic', 'fas fa-list', Topic::class);
         yield MenuItem::linkToCrud('Message', 'fas fa-list', Message::class);
+
+        yield MenuItem::linkToCrud('Contact', 'fas fa-list', Contact::class);
     }
 }
