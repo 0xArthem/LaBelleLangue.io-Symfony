@@ -103,5 +103,28 @@
   border-radius: 5px;
   background-color: var(--third);
   width: 100%;
-  height: 600px;
+  padding: 50px;
+}
+/***********/
+.lp-section-faq {
+  padding-top: 30px;
+}
+.accordion-button {
+  background-color: var(--second) !important;
+  color: var(--main) !important;
+
+  margin-bottom: 20px !important;
+}
+/**/
+.lp-section-abonnement {
+  padding-top: 100px;
+}
+.abonnement-titre {
+  color: var(--third) !important;
+}
+/***/
+.lp-section-titre-milieu {
+  font-size: 100px;
+  color: var(--second);
+  text-align: center;
 }
