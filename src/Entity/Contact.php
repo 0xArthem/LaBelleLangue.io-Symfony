@@ -47,6 +47,11 @@ class Contact
      */
     private $isAnswered = false;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $agreeTerms;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -125,6 +130,18 @@ class Contact
     public function setIsAnswered(bool $isAnswered): self
     {
         $this->isAnswered = $isAnswered;
+
+        return $this;
+    }
+
+    public function isAgreeTerms(): ?bool
+    {
+        return $this->agreeTerms;
+    }
+
+    public function setAgreeTerms(bool $agreeTerms): self
+    {
+        $this->agreeTerms = $agreeTerms;
 
         return $this;
     }
