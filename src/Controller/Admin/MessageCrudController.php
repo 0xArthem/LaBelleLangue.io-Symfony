@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 
 class MessageCrudController extends AbstractCrudController
 {
@@ -34,6 +35,7 @@ class MessageCrudController extends AbstractCrudController
             DateTimeField::new('createdAt')->setLabel('Date de création'),
             AssociationField::new('topic')->setLabel('Topic'),
             AssociationField::new('user')->setLabel('Utilisateur'),
+            BooleanField::new('isActive')->setLabel('Affiché')
         ];
     }
 }

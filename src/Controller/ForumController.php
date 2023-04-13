@@ -32,7 +32,9 @@ class ForumController extends AbstractController
     {
         $topic = $topicRepository->findOneBy(['slug' => $slug]);
 
-        $messages = $topic->getMessages();
+        $messages = $topic->getMessages()->filter(function($message) {
+            return $message->isIsActive() === true;
+        });
 
         $message = new Message();
         // Attribution du Topic au message, et de l'utilisateur
@@ -50,10 +52,17 @@ class ForumController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
 
+            // Message de succès
+            $this->addFlash('success', 'Votre message a bien été publié.');
+
             // Redirection vers la page du topic
             return $this->redirectToRoute('topic', ['slug' => $slug]);
         }
 
+        if ($form->isSubmitted() && !$form->isValid()) {
+            // Message d'erreur
+            $this->addFlash('error', 'Votre message n\'a pas pu être envoyé ! Veuillez réessayez.');
+        } 
         return $this->render('forum/topic.html.twig', [
             'topic' => $topic,
             'messages' => $messages,

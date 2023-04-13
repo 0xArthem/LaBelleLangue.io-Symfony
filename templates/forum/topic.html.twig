@@ -7,6 +7,21 @@
 	<div class="encadrement">
 		<h1 class="text-center">Forum</h1>
 
+		<!-- Affichage du message de succès -->
+		{% for message in app.flashes('success') %}
+			<br>
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		{% for message in app.flashes('error') %}
+			<br>
+			<div class="alert alert-danger">
+				{{ message }}
+			</div>
+		{% endfor %}
+
 		<br>
 
 		<a class="text-dark">
