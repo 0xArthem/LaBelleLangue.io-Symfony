@@ -5,23 +5,34 @@ namespace App\Controller;
 use App\Entity\Message;
 use App\Form\MessageType;
 use App\Repository\TopicRepository;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Security;
 
 class ForumController extends AbstractController
 {
     /**
      * @Route("/forum", name="app_forum")
      */
-    public function index(TopicRepository $topicRepository): Response
+    public function index(Request $request, TopicRepository $topicRepository, PaginatorInterface $paginator): Response
     {
-        $topics = $topicRepository->findBy(array('isActive' => true), array('id' => 'DESC'));
+        $query = $topicRepository->createQueryBuilder('t')
+            ->where('t.isActive = :isActive')
+            ->setParameter('isActive', true)
+            ->orderBy('t.id', 'DESC')
+            ->getQuery();
+
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            1
+        );
 
         return $this->render('forum/index.html.twig', [
-            'topics' => $topics
+            'topics' => $pagination,
         ]);
     }
 
