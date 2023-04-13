@@ -10,6 +10,11 @@
 						<p class="card-text">
 							{{ lecon.presentation|raw }}
 						</p>
+						{% if lecon.likes > 0 or lecon.dislikes > 0 %}
+							<p>
+								{{ (lecon.likes * 100 / (lecon.likes + lecon.dislikes))|default(0)|round(0) }}% des apprenants ont aimé cette leçon.
+							</p>
+						{% endif %}
 					</div>
 					<div class="card-footer">
 						<p class="card-text">
