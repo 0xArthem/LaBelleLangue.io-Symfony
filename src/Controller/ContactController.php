@@ -26,9 +26,17 @@ class ContactController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
 
+            // Message de succès
+            $this->addFlash('success', 'Merci ! Nous venons de recevoir votre message. Vous recevrez une réponse d\'ici 24h !');
+
             $form = $this->createForm(ContactType::class, $contact);
 
             return $this->redirectToRoute('app_contact');
+        }
+
+        if ($form->isSubmitted() && !$form->isValid()) {
+            // Message d'erreur
+            $this->addFlash('error', 'Votre message n\'a pas pu être envoyé ! Veuillez réessayez.');
         }
 
         return $this->render('contact/index.html.twig', [
