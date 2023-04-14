@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ArgumentRepository;
 use App\Repository\PlanRepository;
 use App\Repository\LeconRepository;
 use App\Repository\ThemeRepository;
@@ -43,7 +44,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(FaqRepository $faqRepository): Response
+    public function index(FaqRepository $faqRepository, ArgumentRepository $argumentRepository): Response
     {
 
         $articles = $this->articleRepository->findBy(array('isActive' => true,'isFree' => true), array('id' => 'DESC'),3,0);
@@ -54,6 +55,7 @@ class HomeController extends AbstractController
 
         /** landing-page */
         $faqs =  $faqRepository->findAll();
+        $arguments = $argumentRepository->findAll();
 
 
         // $plans = $planRepository->findAll();
@@ -65,7 +67,8 @@ class HomeController extends AbstractController
             'niveaux' => $niveaux,
             'lecons' => $lecons,
             'categories' => $categories,
-            'faqs' => $faqs
+            'faqs' => $faqs,
+            'arguments' => $arguments
             // 'plans' => $plans,
             // 'activeSub' => $activeSub
         ]);

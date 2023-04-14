@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Argument;
 use App\Entity\Article;
 use App\Entity\Contact;
 use App\Entity\Dialogue;
@@ -54,5 +55,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Contact', 'fas fa-list', Contact::class);
 
         yield MenuItem::linkToCrud('Foire aux questions', 'fas fa-list', Faq::class);
+        yield MenuItem::linkToCrud('Argument', 'fas fa-list', Argument::class);
     }
 }

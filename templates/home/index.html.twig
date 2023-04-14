@@ -28,26 +28,12 @@
 			</div>
 
 			<section class="lp-section-accueil-section-argument">
-				<button class="btn btn-argument">
-					<i class="fas fa-check icon-btn-argument"></i>
-					Créer des opportunités professionnelles
-				</button>
-				<button class="btn btn-argument">
-					<i class="fas fa-check icon-btn-argument"></i>
-					Intégrer les instances diplomatiques internationales
-				</button>
-				<button class="btn btn-argument">
-					<i class="fas fa-check icon-btn-argument"></i>
-					Elargir vos horizons culturels
-				</button>
-				<button class="btn btn-argument">
-					<i class="fas fa-check icon-btn-argument"></i>
-					Voyager dans les 88 pays et territoires francophones
-				</button>
-				<button class="btn btn-argument">
-					<i class="fas fa-check icon-btn-argument"></i>
-					Entrer dans l'école de votre choix
-				</button>
+				{% for argument in arguments %}
+					<button class="btn btn-argument">
+						<i class="fas fa-check icon-btn-argument"></i>
+						{{ argument.content }}
+					</button>
+				{% endfor %}
 			</section>
 
 			<br><br>
