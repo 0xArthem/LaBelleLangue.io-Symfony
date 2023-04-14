@@ -8,6 +8,7 @@ use App\Repository\ThemeRepository;
 use App\Repository\NiveauRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\DialogueRepository;
+use App\Repository\FaqRepository;
 use App\Repository\LeconCategorieRepository;
 use App\Repository\SubscriptionRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +43,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(PlanRepository $planRepository, SubscriptionRepository $subscriptionRepository): Response
+    public function index(FaqRepository $faqRepository): Response
     {
 
         $articles = $this->articleRepository->findBy(array('isActive' => true,'isFree' => true), array('id' => 'DESC'),3,0);
@@ -50,7 +51,11 @@ class HomeController extends AbstractController
         $niveaux = $this->niveauRepository->findBy(array(), array('id' => 'ASC'));
         $lecons = $this->leconRepository->findBy(array('isActive' => true, 'isFree' => true), array('id' => 'DESC'));
         $categories = $this->leconCategorieRepository->findAll();
-        
+
+        /** landing-page */
+        $faqs =  $faqRepository->findAll();
+
+
         // $plans = $planRepository->findAll();
         // $activeSub = $subscriptionRepository->findActiveSub($this->getUser()->getId());
 
@@ -60,6 +65,7 @@ class HomeController extends AbstractController
             'niveaux' => $niveaux,
             'lecons' => $lecons,
             'categories' => $categories,
+            'faqs' => $faqs
             // 'plans' => $plans,
             // 'activeSub' => $activeSub
         ]);

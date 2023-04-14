@@ -32,6 +32,16 @@ class Faq
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isShow = false;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $indice;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -74,6 +84,30 @@ class Faq
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function isIsShow(): ?bool
+    {
+        return $this->isShow;
+    }
+
+    public function setIsShow(bool $isShow): self
+    {
+        $this->isShow = $isShow;
+
+        return $this;
+    }
+
+    public function getIndice(): ?string
+    {
+        return $this->indice;
+    }
+
+    public function setIndice(string $indice): self
+    {
+        $this->indice = $indice;
 
         return $this;
     }
