@@ -1,40 +1,23 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
-	<div class="col">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title text-center">
-					Abonnement
-					<span class="abonnement-titre">Essentiel</span>
-				</h5>
-				<br>
-				<p class="card-text">
-					Vivamus ipsum lectus, posuere ac elit viverra, viverra bibendum nisl. Fusce in semper turpis. Vestibulum a lobortis nulla. Nam ac condimentum nisl, vel semper.
-				</p>
-				<br>
-				<p class="cart-text">
-					<span>
-						<i class="fas fa-circle-plus me-1"></i>
-						Lorem ipsum dolor sit amet consectetur.
-					</span>
-					<br><br>
-					<span>
-						<i class="fas fa-circle-plus me-1"></i>
-						Lorem ipsum dolor sit amet consectetur.
-					</span>
-					<br><br>
-					<span>
-						<i class="fas fa-circle-plus me-1"></i>
-						Lorem ipsum dolor sit amet consectetur.
-					</span>
+	{% for abonnement in abonnements %}
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title text-center">
+						Abonnement
+						<span class="abonnement-titre">{{ abonnement.name }}</span>
+					</h5>
 					<br>
-				</p>
-
-				<section class="d-flex justify-content-center">
-					<a class="btn btn-CTA" href="{{ path('app_contact') }}">
-						Gratuit
-					</a>
-				</section>
+					<p class="card-text">
+						{{ abonnement.description|raw }}
+					</p>
+					<section class="d-flex justify-content-center">
+						<a class="btn btn-CTA">
+							{{ abonnement.price / 100 }}&euro;
+						</a>
+					</section>
+				</div>
 			</div>
 		</div>
-	</div>
+	{% endfor %}
 </div>

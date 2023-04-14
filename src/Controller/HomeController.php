@@ -44,7 +44,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(FaqRepository $faqRepository, ArgumentRepository $argumentRepository): Response
+    public function index(FaqRepository $faqRepository, ArgumentRepository $argumentRepository, SubscriptionRepository $subscriptionRepository): Response
     {
 
         $articles = $this->articleRepository->findBy(array('isActive' => true,'isFree' => true), array('id' => 'DESC'),3,0);
@@ -56,6 +56,7 @@ class HomeController extends AbstractController
         /** landing-page */
         $faqs =  $faqRepository->findAll();
         $arguments = $argumentRepository->findAll();
+        $abonnements = $subscriptionRepository->findBy(array(), array('id' => 'DESC'));
 
 
         // $plans = $planRepository->findAll();
@@ -68,7 +69,8 @@ class HomeController extends AbstractController
             'lecons' => $lecons,
             'categories' => $categories,
             'faqs' => $faqs,
-            'arguments' => $arguments
+            'arguments' => $arguments,
+            'abonnements' => $abonnements
             // 'plans' => $plans,
             // 'activeSub' => $activeSub
         ]);

@@ -11,6 +11,7 @@ use App\Entity\Lecon;
 use App\Entity\LeconCategorie;
 use App\Entity\Message;
 use App\Entity\Niveau;
+use App\Entity\Subscription;
 use App\Entity\Theme;
 use App\Entity\Topic;
 use App\Entity\User;
@@ -56,5 +57,6 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToCrud('Foire aux questions', 'fas fa-list', Faq::class);
         yield MenuItem::linkToCrud('Argument', 'fas fa-list', Argument::class);
+        yield MenuItem::linkToCrud('Abonnement', 'fas fa-list', Subscription::class);
     }
 }
