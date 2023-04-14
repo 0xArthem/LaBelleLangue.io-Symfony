@@ -1,0 +1,20 @@
+<div class="row row-cols-1 row-cols-md-2 g-4">
+	{% for cartePresentation in cartePresentations %}
+		<div class="col-md-6 {% if loop.index is divisible by(2) %}offset-md-6{% endif %}">
+			<div class="card">
+				<div class="card-body">
+					<button class="btn btn-rounded btn-rounded-carte-presentation">
+						{{ cartePresentation.icon|raw }}
+					</button>
+					<h3 class="carte-presentation-h3">
+						{{ cartePresentation.title }}
+					</h3>
+					<p class="card-text texte-carte-presentation">
+						{{ cartePresentation.description|raw }}
+						<span class="texte-carte-presentation-span">compréhension écrite</span>.
+					</p>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>

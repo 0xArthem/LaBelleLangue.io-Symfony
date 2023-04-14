@@ -8,6 +8,7 @@ use App\Repository\LeconRepository;
 use App\Repository\ThemeRepository;
 use App\Repository\NiveauRepository;
 use App\Repository\ArticleRepository;
+use App\Repository\CartePresentationRepository;
 use App\Repository\DialogueRepository;
 use App\Repository\FaqRepository;
 use App\Repository\LeconCategorieRepository;
@@ -44,7 +45,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(FaqRepository $faqRepository, ArgumentRepository $argumentRepository, SubscriptionRepository $subscriptionRepository): Response
+    public function index(FaqRepository $faqRepository, ArgumentRepository $argumentRepository, SubscriptionRepository $subscriptionRepository, CartePresentationRepository $cartePresentationRepository): Response
     {
 
         $articles = $this->articleRepository->findBy(array('isActive' => true,'isFree' => true), array('id' => 'DESC'),3,0);
@@ -57,6 +58,7 @@ class HomeController extends AbstractController
         $faqs =  $faqRepository->findAll();
         $arguments = $argumentRepository->findAll();
         $abonnements = $subscriptionRepository->findBy(array(), array('id' => 'DESC'));
+        $cartePresentations = $cartePresentationRepository->findAll();
 
 
         // $plans = $planRepository->findAll();
@@ -70,7 +72,8 @@ class HomeController extends AbstractController
             'categories' => $categories,
             'faqs' => $faqs,
             'arguments' => $arguments,
-            'abonnements' => $abonnements
+            'abonnements' => $abonnements,
+            'cartePresentations' => $cartePresentations
             // 'plans' => $plans,
             // 'activeSub' => $activeSub
         ]);

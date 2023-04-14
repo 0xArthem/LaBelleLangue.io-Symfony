@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Argument;
 use App\Entity\Article;
+use App\Entity\CartePresentation;
 use App\Entity\Contact;
 use App\Entity\Dialogue;
 use App\Entity\Faq;
@@ -58,5 +59,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Foire aux questions', 'fas fa-list', Faq::class);
         yield MenuItem::linkToCrud('Argument', 'fas fa-list', Argument::class);
         yield MenuItem::linkToCrud('Abonnement', 'fas fa-list', Subscription::class);
+        yield MenuItem::linkToCrud('Carte - Présentation', 'fas fa-list', CartePresentation::class);
     }
 }
