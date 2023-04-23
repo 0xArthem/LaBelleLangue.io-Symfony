@@ -27,23 +27,6 @@ J'ai décidé de développer cette plateforme fictive pour apprendre à créer u
 
 ![Capture d'écran d'une partie de la page d'accueil](https://i.imgur.com/kCPgZTx.png)
 
-## Espace d'administration
-
-![](https://i.imgur.com/AIJlsvt.png)
-
-
-# Accès compte admin
-
-Pour accéder à l'espace d'administration sécurisé, veuillez utiliser les informations de connexion suivantes :
-
-- Email : jonas@mail.fr
-- Mot de passe : Motdepasse7!
-
-Pour accéder à l'espace d'administration, la route est /admin.
-
-![](https://i.imgur.com/LrQYRu9.png)
-![](https://i.imgur.com/yePzXsR.png)
-
 ## Affichage des articles dans la page d'accueil
 
 ![Capture d'écran des articles](https://i.imgur.com/hi2Tweb.png)
@@ -77,3 +60,19 @@ Pour accéder à l'espace d'administration, la route est /admin.
 ## Page de connexion
 
 ![Capture d'écran de la page de connexion](https://i.imgur.com/ngZnPQH.png)
+
+## Espace d'administration
+
+![](https://i.imgur.com/AIJlsvt.png)
+
+# Accès compte admin
+
+Pour accéder à l'espace d'administration sécurisé, veuillez utiliser les informations de connexion suivantes :
+
+- Email : jonas@mail.fr
+- Mot de passe : Motdepasse7!
+
+Pour accéder à l'espace d'administration, la route est /admin.
+
+![](https://i.imgur.com/LrQYRu9.png)
+![](https://i.imgur.com/yePzXsR.png)
