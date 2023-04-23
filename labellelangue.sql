@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 23 avr. 2023 à 15:41
+-- Généré le : dim. 23 avr. 2023 à 15:47
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.3.33
 
@@ -122,22 +122,14 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `is_answered` tinyint(1) NOT NULL,
   `agree_terms` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `contact`
 --
 
 INSERT INTO `contact` (`id`, `email`, `phone`, `object`, `content`, `created_at`, `is_answered`, `agree_terms`) VALUES
-(1, 'max@mail.fr', '0701826532', 'J\'ai une question', 'hello world', '2023-04-13 06:49:11', 0, 0),
-(2, 'lea@mail.fr', '0601765425', 'Objet testddd', 'hello waaaaard', '2023-04-13 06:52:11', 0, 0),
-(3, 'test@mail.fr', '0601173472', 'J\'ai une question', 'dadada', '2023-04-13 06:55:23', 0, 0),
-(4, 'max@mnedsc.fr', '0701826532', 'dsqx', 'bfvcx', '2023-04-13 07:01:46', 0, 0),
-(5, 'max@mail.fr', '0701826532', 'Objet testddd', 'fed', '2023-04-13 07:05:27', 0, 1),
-(6, 'max@mail.fr', '0701826532', 'J\'ai une question', 'efsdcx', '2023-04-13 07:13:07', 0, 1),
-(7, 'max@mail.fr', '0671178972', 'Objet testddd', 'fed', '2023-04-13 10:25:56', 0, 1),
-(8, 'max@mail.fr', '0701826532', 'Objet testddd', 'fesd', '2023-04-13 10:27:29', 0, 1),
-(9, 'lea@mail.fr', '0601765425', 'grfd', 'vfc', '2023-04-13 10:28:54', 0, 1);
+(10, 'max@mail.fr', '0701826532', 'J\'ai une question', 'Ut felis orci, varius vel commodo nec, viverra nec neque. Aliquam erat volutpat. Sed rhoncus quis dui eu feugiat. Nulla ultrices fermentum elit, rutrum interdum leo venenatis id. Proin consequat, purus in dignissim venenatis, tellus arcu blandit nisl, at hendrerit sem dui a est. In sed bibendum leo. Nam facilisis lacus sit amet purus varius, auctor aliquam mauris rutrum. Aenean pellentesque commodo mattis. Ut ornare tellus a augue porttitor sodales eu vitae neque. Nullam at auctor arcu. Integer nec massa id erat dignissim consequat.', '2023-04-23 15:44:03', 0, 1);
 
 -- --------------------------------------------------------
 
