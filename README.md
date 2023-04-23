@@ -64,6 +64,8 @@ J'ai décidé de développer cette plateforme fictive pour apprendre à créer u
 ## Espace d'administration
 
 ![](https://i.imgur.com/AIJlsvt.png)
+![](https://i.imgur.com/LrQYRu9.png)
+![](https://i.imgur.com/yePzXsR.png)
 
 # Accès compte admin
 
@@ -73,6 +75,3 @@ Pour accéder à l'espace d'administration sécurisé, veuillez utiliser les inf
 - Mot de passe : Motdepasse7!
 
 Pour accéder à l'espace d'administration, la route est /admin.
-
-![](https://i.imgur.com/LrQYRu9.png)
-![](https://i.imgur.com/yePzXsR.png)
