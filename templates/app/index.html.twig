@@ -15,6 +15,11 @@
 			<a class="btn btn-dark" href="{{ path('app_account_index') }}">
 				Consulter mon profil
 			</a>
+			{% if app.user and is_granted('ROLE_ADMIN') %}
+				<a class="btn btn-dark" href="{{ path('admin') }}" target="_BLANK">
+					<i class="fas fa-lock"></i>
+				</a>
+			{% endif %}
 		</div>
 
 		<br><br>

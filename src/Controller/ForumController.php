@@ -48,7 +48,7 @@ class ForumController extends AbstractController
                 return $message->isIsActive() === true;
             }),
             $request->query->getInt('page', 1),
-            10
+            7
         );
 
         $message = new Message();

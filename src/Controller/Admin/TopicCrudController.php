@@ -31,7 +31,6 @@ class TopicCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm()->hideOnIndex(),
-            TextField::new('title')->setLabel('Titre'),
             TextField::new('slug')->setLabel('URL'),
             AssociationField::new('article')->setLabel('Article'),
             TextEditorField::new('message')->setLabel('Message'),
