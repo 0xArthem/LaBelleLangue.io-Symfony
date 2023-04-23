@@ -1,0 +1,13 @@
+.card-title-topic {
+  color: var(--third) !important;
+  font-weight: normal !important;
+}
+.form-message-textarea {
+  border: none !important;
+  background-color: var(--main) !important;
+  padding: 25px !important;
+  color: var(--second) !important;
+}
+.form-message-textarea::placeholder {
+  color: var(--second) !important;
+}

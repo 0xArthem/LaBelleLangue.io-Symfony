@@ -7,28 +7,19 @@
 	<div class="encadrement">
 		<h1 class="text-center">Forum</h1>
 
-		<br>
+		<br><br>
 
-		<div class="row row-cols-1 row-cols-md-1 g-4">
+		<div class="row row-cols-1 row-cols-md-2 g-4">
 			{% for topic in topics %}
 				<div class="col mb-4">
 					<div class="card h-100">
 						<div class="card-body">
-							<a class="text-dark">
+							<a class="card-title h5 card-title-topic" href="{{ path('topic', {'slug':topic.slug}) }}">
 								<i class="fas fa-caret-right me-1"></i>
 								{{ topic.article.title }}
 							</a>
 
 							<br><br>
-
-							<a class="card-title h5 text-dark" href="{{ path('topic', {'slug':topic.slug}) }}">
-								{{ topic.title }}
-							</a>
-
-							<p class="card-text">
-								Publié le
-								{{ topic.createdAt|date('d/m/y')}}
-							</p>
 
 							<p class="card-text">
 								{{ topic.message|striptags|length > 300 ? topic.message|striptags|slice(0, 300) ~ '...' : topic.message|striptags }}

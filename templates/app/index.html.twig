@@ -24,18 +24,20 @@
 				Consultez nos nouveaux articles ...
 			</a>
 		</section>
-		<br>
+
+		<br><br><br>
+
 		{% include "includes/app/card-articles.html.twig" %}
+
+		<br><br><br>
+
+		{% include "includes/app/card-niveaux.html.twig" %}
 
 		<br><br>
 
 		{% include "includes/app/card-themes.html.twig" %}
 
-		<br><br>
-
-		{% include "includes/app/card-niveaux.html.twig" %}
-
-		<br><br>
+		<br><br><br>
 
 		<section class="d-flex justify-content-center">
 			<a class="btn btn-CTA" href="{{ path('membre_lecons') }}">
@@ -43,11 +45,13 @@
 				<i class="fas fa-gem ms-1"></i>
 			</a>
 		</section>
-		<br>
-		{% include "includes/app/card-lecons.html.twig" %}
+
+		<br><br><br>
+
+		{% include "includes/app/card-categories-lecon.html.twig" %}
 
 		<br><br>
 
-		{% include "includes/app/card-categories-lecon.html.twig" %}
+		{% include "includes/app/card-lecons.html.twig" %}
 	</div>
 {% endblock %}

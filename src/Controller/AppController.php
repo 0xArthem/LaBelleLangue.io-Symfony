@@ -177,9 +177,12 @@ class AppController extends AbstractController
                 $request->query->get('page', 1),
                 12
             );
+
+            $niveaux = $this->niveauRepository->findBy(array(), array('id' => 'DESC'));
             
             return $this->render('app/articles.html.twig', [
-                'articles' => $articles
+                'articles' => $articles,
+                'niveaux' => $niveaux
             ]);
         }
         return $this->redirectToRoute('home');
@@ -217,45 +220,13 @@ class AppController extends AbstractController
                 12
             );
 
-            return $this->render('app/lecons.html.twig', [
-                'lecons' => $lecons
-            ]);
-        }
-        return $this->redirectToRoute('home');
-    }
-
-    /**
-     * @Route("/espace-membre/niveaux", name="membre_niveaux")
-     */
-    public function niveaux(): Response
-    {
-        $user = $this->getUser();
-
-        if ($user && $user->isPaiement()) {
-            $niveaux = $this->niveauRepository->findBy(array(), array('id' => 'DESC'));
-
-            return $this->render('app/niveaux.html.twig', [
-                'niveaux' => $niveaux
-            ]);
-        }
-        return $this->redirectToRoute('home');
-    }
-
-    /**
-     * @Route("/espace-membre/categories", name="membre_categories")
-     */
-    public function categories(): Response
-    {
-        $user = $this->getUser();
-
-        if ($user && $user->isPaiement()) {
             $categories = $this->leconCategorieRepository->findBy(array(), array('id' => 'DESC'));
 
-            return $this->render('app/categories.html.twig', [
+            return $this->render('app/lecons.html.twig', [
+                'lecons' => $lecons,
                 'categories' => $categories
             ]);
         }
         return $this->redirectToRoute('home');
     }
-
 }

@@ -8,13 +8,16 @@
 							{{ lecon.title }}
 						</h5>
 						<p class="card-text">
-							{{ lecon.presentation|raw }}
+							{{ lecon.presentation|striptags|length > 150 ? lecon.presentation|striptags|slice(0, 150) ~ '...' : lecon.presentation|striptags }}
+
+							{% if lecon.likes > 0 or lecon.dislikes > 0 %}
+								<br><br>
+								<em>
+									<i class="far fa-thumbs-up me-1"></i>
+									{{ (lecon.likes * 100 / (lecon.likes + lecon.dislikes))|default(0)|round(0) }}% des apprenants ont aimé cette leçon.
+								</em>
+							{% endif %}
 						</p>
-						{% if lecon.likes > 0 or lecon.dislikes > 0 %}
-							<p>
-								{{ (lecon.likes * 100 / (lecon.likes + lecon.dislikes))|default(0)|round(0) }}% des apprenants ont aimé cette leçon.
-							</p>
-						{% endif %}
 					</div>
 					<div class="card-footer">
 						<p class="card-text">

@@ -11,6 +11,7 @@ body {
   padding-right: 100px;
   padding-bottom: 100px;
   padding-top: 65px;
+  min-height: 520px;
 
   color: var(--main) !important;
 }
@@ -19,6 +20,7 @@ body {
   padding-right: 350px;
   padding-bottom: 100px;
   padding-top: 100px;
+  min-height: 520px;
 
   color: var(--main) !important;
 }
@@ -30,11 +32,11 @@ body {
 .card-niveau-body {
   font-size: 17.5px;
   text-align: center;
-  color: white !important;
+  color: var(--third) !important;
   padding-bottom: 20px !important;
 }
 .card-niveau {
-  background-color: #262626 !important;
+  background-color: var(--second) !important;
 }
 .badge-word-solution {
   color: #262626 !important;

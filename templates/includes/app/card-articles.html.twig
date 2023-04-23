@@ -24,7 +24,7 @@
 
 						<p class="card-text">
 							<i class="fas fa-caret-right me-1"></i>
-							{{ article.description|striptags|length > 130 ? article.description|striptags|slice(0, 130) ~ ' ...' : article.description|striptags }}
+							{{ article.description|striptags|length > 100 ? article.description|striptags|slice(0, 100) ~ ' ...' : article.description|striptags }}
 						</p>
 					</div>
 				</div>

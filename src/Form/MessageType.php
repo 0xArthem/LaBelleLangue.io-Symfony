@@ -16,7 +16,7 @@ class MessageType extends AbstractType
             ->add('message', TextareaType::class, [
                 'label' => false,
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control form-message-textarea',
                     'placeholder' => 'Ecrivez votre message ..'
                 ]
             ])
